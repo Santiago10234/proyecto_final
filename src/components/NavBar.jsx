@@ -42,7 +42,7 @@ function NavBar() {
                             </li>
                             { usuarioIniciado &&
                                 <li className="nav-item">
-                                <a className="nav-link active" href="#">Edit Post</a>
+                                <a onClick={()=>{navigate("/editpost")}} className="nav-link active" href="#">Edit Post</a>
                             </li>
                             }
                         </ul>

@@ -36,21 +36,21 @@ function FormForAdd() {
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputText" className="form-label">Model</label>
-                    <input type="text" className="form-control" id="exampleInputText" placeholder="Ingrese texto aquí"/>
+                    <input type="text" className="form-control" id="exampleInputText" placeholder="Enter the Model"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputNumber" className="form-label">Year</label>
-                    <input type="number" className="form-control" id="exampleInputNumber" placeholder="Ingrese texto aquí"/>
+                    <input type="number" className="form-control" id="exampleInputNumber" placeholder="Enter the Year"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputNumber" className="form-label">Mileage</label>
-                    <input type="number" className="form-control" id="exampleInputNumber" placeholder="Ingrese texto aquí"/>
+                    <input type="number" className="form-control" id="exampleInputNumber" placeholder="Enter the Mileage"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="exampleInputText" className="form-label">Transmission</label>
-                    <input type="text" className="form-control" id="exampleInputText" placeholder="Ingrese texto aquí"/>
+                    <input type="text" className="form-control" id="exampleInputText" placeholder="Enter the Transmission"/>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-dark btnPost">Post</button>
             </form>
         </div>
     </div>

@@ -10,6 +10,7 @@ import Login from './pages/login.jsx'
 import Register from './pages/register.jsx'
 import Contact from './pages/contact.jsx';
 import About from './pages/About.jsx';
+import EditPost from './pages/EditPost.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About/>
+  },
+  {
+    path: "/editpost",
+    element: <EditPost/>
   }
 ])
 
