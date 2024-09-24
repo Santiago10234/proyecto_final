@@ -5,7 +5,7 @@ function AboutUs() {
     <div className='container-aboutUs'>
       <div>
         <div className="d-flex justify-content-center">
-        <div className=" mb-3 border-top border-bottom" style={{ width: '100%', padding:'20px', marginLeft:'60px', marginRight:'60px', marginTop:'50px'}}>
+        <div className=" mb-3 border-bottom" style={{ width: '100%', padding:'20px', marginLeft:'60px', marginRight:'60px', marginTop:'50px'}}>
             <div className="row g-0">
                 <div className="col-md-4">
                     <img 

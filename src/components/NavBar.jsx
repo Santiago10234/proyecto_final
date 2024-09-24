@@ -8,7 +8,7 @@ function NavBar() {
   return (
     <> 
      <form>
-            <nav className="navbar navbar-expand-lg">
+            <nav className="navbar navbar-expand-lg border-bottom">
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#"><img className='imgLogo' src="src\assets\Captura_de_pantalla_2024-06-29_181844-transformed.png" alt="" /></a>
                     <button 
