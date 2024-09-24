@@ -1,0 +1,60 @@
+.containerLogin{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.containerForm{
+    display: grid;
+    place-items: center;
+    width: 800px;
+}
+.containerImg{
+    width: 785px;
+}
+.img{
+    width: 100%;
+}
+.btninicio{
+    margin-top: 40px;
+    margin-bottom: 90px;
+    width: 100%;
+}
+.mb-3{
+    width: 400px;
+}
+.titulo{
+    margin-bottom: 40px;
+}
+.sign_Up{
+    display: flex;
+    justify-content: center;
+}
+.link{
+    margin-left: 10px;
+}
+
+@media (max-width: 1024px) {
+    .containerLogin {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .containerForm {
+        width: 100%; 
+    }
+}
+
+@media (max-width: 768px){
+    .img{
+        width: 400px;
+        margin-top: 20px;
+    }
+    .containerImg{
+        display: grid;
+        place-items: center;
+        width: 100%;
+    }
+}
