@@ -1,7 +1,5 @@
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client';
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import AddCar from './pages/AddCar.jsx'
