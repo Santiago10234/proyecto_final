@@ -10,15 +10,15 @@ function Form(){
                 <p>Enter your Credentials to access you account</p>
            </div>
                 
-            <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <div className="mb-3">
+                <label for="exampleInputEmail1" className="form-label">Email address</label>
                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email"/>
             </div>
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"/>
+            <div className="mb-3">
+                <label for="exampleInputPassword1" className="form-label">Password</label>
+                <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
             </div>
-          
+
             <button type="submit" className="btn btn-dark btninicio">Login</button>
 
             <div className="sign_Up">
