@@ -29,19 +29,19 @@ function NavBar() {
                             <li className="nav-item">
                                 <a onClick={()=>{navigate("/")}} className="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
-                            {usuarioIniciado &&
-                            <li className="nav-item">
-                                <a onClick={()=>{navigate("/addcar")}} className="nav-link active" href="#">Add Car</a>
-                            </li>
-                            }
                             <li className="nav-item">
                                 <a onClick={()=>{navigate("/about")}} className="nav-link active" href="#">About</a>
                             </li>
                             <li className="nav-item">
                                 <a onClick={()=>{navigate("/contact")}} className="nav-link active" href="#">Contact</a>
                             </li>
+                            {usuarioIniciado &&
+                            <li className="nav-item">
+                                <a onClick={()=>{navigate("/addcar")}} className="nav-link active" href="#">Add Car</a>
+                            </li>
+                            }
                             { usuarioIniciado &&
-                                <li className="nav-item">
+                            <li className="nav-item">
                                 <a onClick={()=>{navigate("/editpost")}} className="nav-link active" href="#">Edit Post</a>
                             </li>
                             }
