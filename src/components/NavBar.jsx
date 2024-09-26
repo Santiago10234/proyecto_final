@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 
 function NavBar() {
     const navigate = useNavigate()
-    const usuarioIniciado = localStorage.getItem("usuario")
+    const usuarioIniciado = sessionStorage.getItem("usuario")
   return (
     <> 
      <form>

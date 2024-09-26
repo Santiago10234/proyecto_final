@@ -4,8 +4,10 @@ from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from rest_framework.authtoken.models import Token
 from rest_framework import status
+from django.contrib.auth import authenticate
+from django.contrib.auth.models import User
 
-User = get_user_model()  # Para obtener el modelo personalizado de usuario
+User = get_user_model()  
 
 class RegistroView(APIView):
     def post(self, request):
@@ -27,6 +29,24 @@ class RegistroView(APIView):
         
         # Crear usuario
         nuevo_usuario = User.objects.create_user(username=username,email=email, first_name=first_name, last_name=last_name, password=password)
-        Token.objects.create(user=nuevo_usuario)  # Crear token de autenticación para el usuario
         
         return Response({'success': 'Usuario creado exitosamente'}, status=status.HTTP_201_CREATED)
+    
+# Vista para inicio de sesión
+class LoginView(APIView):
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+        
+        user = User.objects.get(email=email)
+        
+        # Autenticamos al usuario
+        user = authenticate(request, username=user.username, password=password)
+        
+        if user is not None:
+            # Si el usuario es autenticado, devolvemos el token o éxito
+            token, _ = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key}, status=status.HTTP_200_OK)
+        else:
+            # Si falla la autenticación
+            return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)

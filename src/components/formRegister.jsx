@@ -62,8 +62,8 @@ function FormRegister() {
                 <div className="titulo">
                     <h1>Get Started Now</h1>
                 </div>
-                {error && <p style={{ color: "red" }}>{error}</p>}
-                {success && <p style={{ color: "green" }}>{success}</p>}
+                {error && <p className="alert alert-danger">{error}</p>}
+                {success && <p className="alert alert-success">{success}</p>}
                 <div className="mb-3">
                     <label htmlFor="exampleInputName1" className="form-label">Name</label>
                     <input
@@ -105,7 +105,7 @@ function FormRegister() {
 
                 <div className="sign_Up">
                     <p>Have an account?</p>
-                    <a onClick={() => navigate("/login")} className="link-offset-2 link-underline link-underline-opacity-0 link">Sign In</a>
+                    <a style={{cursor:'pointer'}} onClick={() => navigate("/login")} className="link-offset-2 link-underline link-underline-opacity-0 link">Sign In</a>
                 </div>
             </form>
         </>

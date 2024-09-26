@@ -5,7 +5,10 @@ function Contact() {
   return (
     <div>
         <NavBar/>
-        <h1>Contact</h1>
+        <h1 style={{textAlign:'center'}}>Contact Us</h1>
+        <div>
+        <i class="bi bi-whatsapp"></i>
+        </div>
     </div>
   )
 }
