@@ -6,6 +6,7 @@ function FormForAdd() {
         <div  className="d-flex justify-content-center align-items-center" style={{ minHeight: '90vh' }}>
             <form className='border fromBorder'>
                 <div className="mb-3">
+                    <input className="form-control" type="file" />
                     <label htmlFor="exampleInputText" className="form-label">Brand</label>
                     <select className="form-control">
                         <option defaultValue>Brand</option>

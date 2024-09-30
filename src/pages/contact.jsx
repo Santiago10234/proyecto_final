@@ -1,13 +1,15 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
+import FormContact from '../components/FormContact'
 
 function Contact() {
   return (
     <div>
         <NavBar/>
-        <h1 style={{textAlign:'center'}}>Contact Us</h1>
-        <div>
-        <i class="bi bi-whatsapp"></i>
+        <div style={{padding:'60px', display:'flex', justifyContent:'center'}}>
+          <div>
+            <FormContact/>
+          </div>
         </div>
     </div>
   )
