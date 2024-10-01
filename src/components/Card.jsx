@@ -1,26 +1,20 @@
 import React from 'react';
-import '../styles/card.css'
+import '../styles/card.css';
 
-function Card() {
+function Card({ car }) {
   return (
-    <div>
-      <div className="card" style={{ width: '18rem' }}>
-        <img src="src\assets\Range Rover Black Price.jpg" className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">Land Rover Velar</h5>
-          <p className="card-text">2023</p>
-        </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">A third item</li>
-        </ul>
-        <div className="card-body priceAndMore">
-          <h5>$40,000</h5>
-          <a href="#" className="card-link">View Details</a>
-        </div>
+    <div className="card" style={{ width: '18rem', marginBottom:'20px', marginTop:'20px' }}>
+      <img src={`http://localhost:8000${car.car_image}`} className="card-img-top" alt={`${car.brand} ${car.model}`} />
+      <div className="card-body">
+        <h5 className="card-title">{car.brand} {car.model}</h5>
+        <p className="card-text">Año: {car.year}</p>
+        <p className="card-text">Kilometraje: {car.mileage} km</p>
+        <p className="card-text">Transmisión: {car.transmission}</p>
       </div>
     </div>
   );
 }
 
 export default Card;
+
 

@@ -1,6 +1,33 @@
 .ContainerCard{
     margin-left: 60px;
     margin-right: 60px;
+    display: grid;
+    align-items: baseline;
+    justify-content: space-between;
+    grid-template-columns: repeat(4, 18rem);
+}
+@media (max-width: 1200px) {
+    .ContainerCard {
+        grid-template-columns: repeat(3, 18rem); /* 3 columnas en pantallas medianas */
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .ContainerCard {
+        grid-template-columns: repeat(2, 18rem); /* 2 columnas en pantallas pequeñas */
+        margin-left: 60px;
+        margin-right: 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ContainerCard {
+        grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+        margin-left: 55px;
+        margin-right: 55px;
+    }
 }
 .priceAndMore{
     display: flex;
