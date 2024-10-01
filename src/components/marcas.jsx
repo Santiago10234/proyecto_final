@@ -17,10 +17,10 @@ function Marcas() {
                 <img style={{width:'150px'}} src="src\assets\Captura_de_pantalla_2024-09-19_144426-l3Kb0GS_I-transformed.png" className="card-img-top" alt="..."/>
             </div>
             <div style={{border:'1px solid silver', borderRadius:'20px', padding:'6px'}}>
-                <img style={{width:'150px'}} src="src\assets\Captura de pantalla 2024-09-19 144446.png" className="card-img-top" alt="..."/>
+                <img style={{width:'150px'}} src="src\assets\Captura_de_pantalla_2024-09-19_144446-transformed.png" className="card-img-top" alt="..."/>
             </div>
             <div style={{border:'1px solid silver', borderRadius:'20px', padding:'6px'}}>
-                <img style={{width:'150px'}} src="src\assets\Captura de pantalla 2024-09-19 144433.png" className="card-img-top" alt="..."/>
+                <img style={{width:'150px'}} src="src\assets\Captura_de_pantalla_2024-09-19_144433-transformed (1).png" className="card-img-top" alt="..."/>
             </div>
         </div>
     </div>

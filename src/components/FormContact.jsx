@@ -28,10 +28,10 @@ function FormContact() {
         </fieldset>
       </form>
         <div className='contact'>
-            <i class="bi bi-whatsapp fs-3"></i>
-            <i class="bi bi-envelope-fill fs-3"></i>   
-            <i class="bi bi-instagram fs-3"></i>
-            <i class="bi bi-facebook fs-3"></i>
+            <a style={{color:'black'}} href="https://web.whatsapp.com/"><i class="bi bi-whatsapp fs-3"></i></a>
+            <a style={{color:'black'}} href="https://www.google.com/intl/es/gmail/about/"><i class="bi bi-envelope-fill fs-3"></i></a>
+            <a style={{color:'black'}} href="https://www.instagram.com/"><i class="bi bi-instagram fs-3"></i></a>
+            <a style={{color:'black'}} href="https://www.facebook.com/?locale=es_LA"><i class="bi bi-facebook fs-3"></i></a>
         </div>
     </div>
   )
