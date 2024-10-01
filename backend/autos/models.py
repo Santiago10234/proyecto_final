@@ -13,6 +13,6 @@ class Car(models.Model):
     mileage = models.PositiveIntegerField()  # Kilometraje
     transmission = models.CharField(max_length=20, choices=TRANSMISSION_CHOICES)  # Tipo de transmisión
     car_image = models.ImageField(upload_to='car_images/')  # Imagen del auto
-
+   
     def __str__(self):
         return f'{self.brand} {self.model} ({self.year})'

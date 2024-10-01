@@ -7,9 +7,9 @@ function Card({ car }) {
       <img src={`http://localhost:8000${car.car_image}`} className="card-img-top" alt={`${car.brand} ${car.model}`} />
       <div className="card-body">
         <h5 className="card-title">{car.brand} {car.model}</h5>
-        <p className="card-text">Año: {car.year}</p>
-        <p className="card-text">Kilometraje: {car.mileage} km</p>
-        <p className="card-text">Transmisión: {car.transmission}</p>
+        <p className="card-text">Año: <strong>{car.year}</strong></p>
+        <p className="card-text">Kilometraje: <strong>{car.mileage} km</strong></p>
+        <p className="card-text">Transmisión: <strong>{car.transmission}</strong></p>
       </div>
     </div>
   );
