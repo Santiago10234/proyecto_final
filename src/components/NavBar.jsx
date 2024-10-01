@@ -24,7 +24,7 @@ function NavBar() {
                     <div className="collapse navbar-collapse" id="navbarScroll">
                         <ul 
                             className="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" 
-                            style={{ '--bs-scroll-height': '100px' }} // Cambiado a objeto
+                            style={{ '--bs-scroll-height': '100px' }} 
                         >
                             <li className="nav-item">
                                 <a onClick={()=>{navigate("/")}} className="nav-link active" aria-current="page" href="#">Home</a>
@@ -42,7 +42,7 @@ function NavBar() {
                             }
                             { usuarioIniciado &&
                             <li className="nav-item">
-                                <a onClick={()=>{navigate("/editpost")}} className="nav-link active" href="#">Edit Post</a>
+                                <a onClick={()=>{navigate("/editpost")}} className="nav-link active" href="#">Publications</a>
                             </li>
                             }
                         </ul>
