@@ -1,0 +1,13 @@
+.contact{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 190px;
+    margin-top: 20px;
+}
+.btn-contact{
+    width: 100%;
+}
+.container-contact{
+    padding: 20px;
+}
