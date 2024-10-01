@@ -10,6 +10,8 @@ function Card({ car }) {
         <p className="card-text">Year: <strong>{car.year}</strong></p>
         <p className="card-text">Mileage: <strong>{car.mileage} km</strong></p>
         <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
+        <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
+        <p className="card-text">Price: <strong>$ {car.price}</strong></p>
       </div>
     </div>
   );

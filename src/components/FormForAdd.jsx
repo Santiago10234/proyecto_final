@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';  // Importar el hook para redirección
+import { useNavigate } from 'react-router-dom'; 
 
 function FormForAdd() {
   const [error, setError] = useState("");
@@ -11,10 +11,12 @@ function FormForAdd() {
     year: '',
     mileage: '',
     transmission: '',
-    car_image: null
+    car_image: null,
+    price: "",
+    num_tel:""
   });
 
-  const navigate = useNavigate();  // Hook para redirección
+  const navigate = useNavigate();  
 
   const handleChange = (e) => {
     if (e.target.name === 'car_image') {
@@ -43,22 +45,22 @@ function FormForAdd() {
           'Content-Type': 'multipart/form-data'
         }
       });
-      // Mostrar mensaje de éxito
+      
       setSuccess('Auto publicado exitosamente');
 
-      // Redirigir a la página principal después de un breve tiempo
+      
       setTimeout(() => {
-        navigate('/');  // Redirige a la página principal
-      }, 2000);  // Espera 2 segundo antes de redirigir
+        navigate('/'); 
+      }, 2000);  
       
     } catch (error) {
-      setError('Error al publicar el auto:', error);
+      setError('Error al publicar el auto', error);
     }
   };
 
   return (
     <div>
-      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '90vh' }}>
+      <div className="d-flex justify-content-center align-items-center" style={{ minHeight: '90vh', marginTop:'60px', marginBottom:'50px'}}>
         <form className="border fromBorder" onSubmit={handleSubmit}>
         {error && <p className="alert alert-danger">{error}</p>}
         {success && <p className="alert alert-success">{success}</p>}
@@ -75,13 +77,11 @@ function FormForAdd() {
                         <option>Cadillac</option>
                         <option>Dodge</option>
                         <option>Ferrari</option>
-                        <option>Audi</option>
                         <option>Ford</option>
                         <option>Jaguar</option>
                         <option>Lamborghini</option>
                         <option>Land Rover</option>
                         <option>Lexus</option>
-                        <option>Audi</option>
                         <option>Maserati</option>
                         <option>Mazda</option>
                         <option>Mercedes Benz</option>
@@ -111,6 +111,14 @@ function FormForAdd() {
               <option value="automatic">Automática</option>
               <option value="semi-automatic">Semi-Automática</option>
             </select>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Price</label>
+            <input type="number" className="form-control" name="price" placeholder="Enter the total amount of the car" onChange={handleChange} />
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Phone Number</label>
+            <input type="number" className="form-control" name="num_tel" placeholder="Enter the phone number" onChange={handleChange} />
           </div>
           <button type="submit" className="btn btn-dark btnPost">Post</button>
         </form>
