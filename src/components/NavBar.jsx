@@ -1,16 +1,45 @@
-import React from 'react'
-import '../styles/navbar.css'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import '../styles/navbar.css';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
-    const navigate = useNavigate()
-    const usuarioIniciado = sessionStorage.getItem("usuario")
-  return (
-    <> 
-     <form>
+    const navigate = useNavigate();
+    const usuarioIniciado = sessionStorage.getItem("usuario");
+
+    // Estado local para la búsqueda
+    const [searchTerm, setSearchTerm] = useState('');
+
+    // Función que maneja el submit del formulario de búsqueda
+    const handleSearch = (e) => {
+        e.preventDefault(); // Evita que la página se recargue
+
+        // Convertir el término de búsqueda a minúsculas para hacer la comparación más robusta
+        const term = searchTerm.toLowerCase();
+
+        // Redirigir en función del término de búsqueda
+        if (term === 'home') {
+            navigate('/');
+        } else if (term === 'about') {
+            navigate('/about');
+        } else if (term === 'contact') {
+            navigate('/contact');
+        } else if (term === 'add car' && usuarioIniciado) {
+            navigate('/addcar');
+        } else if (term === 'publications' && usuarioIniciado) {
+            navigate('/editpost');
+        } else {
+            alert('Página no encontrada. Intenta con Home, About, Contact, Add Car o Publications.');
+        }
+
+        // Limpiar el campo de búsqueda después de realizar la búsqueda
+        setSearchTerm('');
+    };
+
+    return (
+        <>
             <nav className="navbar navbar-expand-lg border-bottom">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#"><img className='imgLogo' src="src\assets\Captura_de_pantalla_2024-06-29_181844-transformed.png" alt="" /></a>
+                    <a className="navbar-brand" href="#"><img className='imgLogo' src="src/assets/Captura_de_pantalla_2024-06-29_181844-transformed.png" alt="logo" /></a>
                     <button 
                         className="navbar-toggler" 
                         type="button" 
@@ -27,45 +56,44 @@ function NavBar() {
                             style={{ '--bs-scroll-height': '100px' }} 
                         >
                             <li className="nav-item">
-                                <a onClick={()=>{navigate("/")}} className="nav-link active" aria-current="page" href="#">Home</a>
+                                <a onClick={() => { navigate("/") }} className="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a onClick={()=>{navigate("/about")}} className="nav-link active" href="#">About</a>
+                                <a onClick={() => { navigate("/about") }} className="nav-link active" href="#">About</a>
                             </li>
                             <li className="nav-item">
-                                <a onClick={()=>{navigate("/contact")}} className="nav-link active" href="#">Contact</a>
+                                <a onClick={() => { navigate("/contact") }} className="nav-link active" href="#">Contact</a>
                             </li>
                             {usuarioIniciado &&
                             <li className="nav-item">
-                                <a onClick={()=>{navigate("/addcar")}} className="nav-link active" href="#">Add Car</a>
+                                <a onClick={() => { navigate("/addcar") }} className="nav-link active" href="#">Add Car</a>
                             </li>
                             }
-                            { usuarioIniciado &&
+                            {usuarioIniciado &&
                             <li className="nav-item">
-                                <a onClick={()=>{navigate("/editpost")}} className="nav-link active" href="#">Publications</a>
+                                <a onClick={() => { navigate("/editpost") }} className="nav-link active" href="#">Publications</a>
                             </li>
                             }
                         </ul>
-                        <form className="d-flex search" role="search">
+                        <form className="d-flex search" role="search" onSubmit={handleSearch}>
                             <input 
-                                className="form-control me-2 " 
+                                className="form-control me-2" 
                                 type="search" 
                                 placeholder="Search" 
                                 aria-label="Search" 
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el estado con el valor ingresado
                             />
                             <button className="btn btn-outline-dark" type="submit">Search</button>
-                            <div className='container-sing'>
-                            <a onClick={()=>{navigate("/login")}} className="nav-link active sing " href="#">Sing in</a>
-                        </div>
                         </form>
-                        
+                        <div className='container-sing'>
+                            <a onClick={() => { navigate("/login") }} className="nav-link active sing" href="#">Sing in</a>
+                        </div>
                     </div>
                 </div>
             </nav>
-     </form>
-
-    </>
-  )
+        </>
+    );
 }
 
-export default NavBar
+export default NavBar;
