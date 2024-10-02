@@ -16,6 +16,7 @@ function ContactoHome() {
           <div className="col-md-8">
             <div className="card-body" style={{padding:'40px'}}>
               <h2 className="card-title">Have More Questions? Don't <br /> Hesitate To Reach Us</h2>
+              
             </div>
           </div>
         </div>

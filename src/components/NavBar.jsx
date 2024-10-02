@@ -85,10 +85,11 @@ function NavBar() {
                                 onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el estado con el valor ingresado
                             />
                             <button className="btn btn-outline-dark" type="submit">Search</button>
+                            <div className='container-sing'>
+                                <a onClick={() => { navigate("/login") }} className="nav-link sing" href="#">Sing in</a>
+                            </div>
                         </form>
-                        <div className='container-sing'>
-                            <a onClick={() => { navigate("/login") }} className="nav-link active sing" href="#">Sing in</a>
-                        </div>
+                        
                     </div>
                 </div>
             </nav>
