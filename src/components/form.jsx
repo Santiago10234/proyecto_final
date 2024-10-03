@@ -7,6 +7,7 @@ function Form() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [success, setSuccess] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,8 +27,12 @@ function Form() {
 
             // Si la respuesta es exitosa, redirigimos al Home
             if (response.status === 200) {
-                navigate('/');
-                sessionStorage.setItem("usuario",true)
+                setSuccess("Usuario creado exitosamente.");
+                setError("");
+                // Redirige automáticamente a la página de login
+                setTimeout(() => {
+                    navigate("/");
+                }, 2000);
             }
         } catch (err) {
             setError("Usuario o contraseña incorrectos.");
@@ -43,7 +48,7 @@ function Form() {
                 </div>
 
                 {error && <div className="alert alert-danger">{error}</div>}
-
+                {success && <p className="alert alert-success">{success}</p>}
                 <div className="mb-3">
                     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
                     <input
