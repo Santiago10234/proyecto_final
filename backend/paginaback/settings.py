@@ -100,7 +100,7 @@ WSGI_APPLICATION = 'paginaback.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'login',
+        'NAME': 'luxury_cars_db',
         'USER': 'root',
         'PASSWORD': 'Hola1212',
         'HOST': 'localhost',

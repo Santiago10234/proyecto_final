@@ -31,7 +31,20 @@ function FormForAdd() {
       });
     }
   };
-
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        // Asigna el resultado al estado usando setFormData
+        setFormData(prevState => ({
+          ...prevState,
+          car_image: event.target.result
+        }));
+      };
+      reader.readAsDataURL(file);  // Esto convierte el archivo a base64
+    }
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formDataToSend = new FormData();
@@ -65,7 +78,7 @@ function FormForAdd() {
         {error && <p className="alert alert-danger">{error}</p>}
         {success && <p className="alert alert-success">{success}</p>}
           <div className="mb-3">
-            <input className="form-control" type="file" name="car_image" onChange={handleChange} />
+            <input className="form-control" type="file" name="car_image" id='upload-file' onChange={handleImage} />
             <label className="form-label">Brand</label>
             <select className="form-control" name="brand" onChange={handleChange}>
             <option defaultValue>Brand</option>

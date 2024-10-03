@@ -12,7 +12,7 @@ class Car(models.Model):
     year = models.PositiveIntegerField()  
     mileage = models.PositiveIntegerField() 
     transmission = models.CharField(max_length=20, choices=TRANSMISSION_CHOICES)  
-    car_image = models.ImageField(upload_to='car_images/') 
+    car_image = models.TextField(blank=True,null=True) 
     price = models.FloatField(blank=True,null=True)
     num_tel = models.TextField(blank=True,null=True)
    
