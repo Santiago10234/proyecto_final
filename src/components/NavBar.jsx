@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
     const navigate = useNavigate();
-    const usuarioIniciado = sessionStorage.getItem("usuario");
+    const usuarioIniciado = localStorage.getItem("usuario");
 
     // Estado local para la búsqueda
     const [searchTerm, setSearchTerm] = useState('');
@@ -39,7 +39,7 @@ function NavBar() {
         <>
             <nav className="navbar navbar-expand-lg border-bottom">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#"><img className='imgLogo' src="src/assets/Captura_de_pantalla_2024-06-29_181844-transformed.png" alt="logo" /></a>
+                    <a className="navbar-brand" onClick={() => { navigate("/") }} href="#"><img className='imgLogo' src="src/assets/Captura_de_pantalla_2024-06-29_181844-transformed.png" alt="logo" /></a>
                     <button 
                         className="navbar-toggler" 
                         type="button" 
@@ -85,8 +85,10 @@ function NavBar() {
                                 onChange={(e) => setSearchTerm(e.target.value)} // Actualiza el estado con el valor ingresado
                             />
                             <button className="btn btn-outline-dark" type="submit">Search</button>
-                            <div className='container-sing'>
-                                <a onClick={() => { navigate("/login") }} className="nav-link sing" href="#">Sing in</a>
+                            <div className='container-sing text-nowrap'>
+                                <a onClick={() => { navigate("/login") }} className="nav-link sing" href="#">{
+                                    usuarioIniciado ? "Log out" : "Sign in"
+                            }</a>
                             </div>
                         </form>
                         

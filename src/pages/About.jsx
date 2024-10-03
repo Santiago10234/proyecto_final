@@ -5,7 +5,6 @@ import NavBar from '../components/NavBar'
 import AboutUs from '../components/AboutUs'
 
 function About() {
-    const navigate = useNavigate
   return (
     <div>
       <NavBar/>
