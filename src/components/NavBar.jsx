@@ -75,7 +75,7 @@ function NavBar() {
                             </li>
                             }
                         </ul>
-                        <form className="d-flex search" role="search" onSubmit={handleSearch}>
+                        <form className="d-flex search container-search" role="search" onSubmit={handleSearch}>
                             <input 
                                 className="form-control me-2" 
                                 type="search" 

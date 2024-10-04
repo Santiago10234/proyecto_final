@@ -16,7 +16,30 @@ function ContactoHome() {
           <div className="col-md-8">
             <div className="card-body" style={{padding:'40px'}}>
               <h2 className="card-title">Have More Questions? Don't <br /> Hesitate To Reach Us</h2>
-              
+              <div style={{marginTop:'70px'}}>
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Email</td>
+                      <td>contacto@luxurycars.com</td>
+                      <td><i class="bi bi-envelope-fill fs-5"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>WhatsApp</td>
+                      <td>+506 8234 5678</td>
+                      <td><i class="bi bi-whatsapp fs-5"></i></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td >Form contact</td>
+                      <td><a onClick={() => { navigate("/contact") }} className="nav-link" href="#">Contact</a></td>
+                      <td><i class="bi bi-chat-dots-fill fs-5"></i></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

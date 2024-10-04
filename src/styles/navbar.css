@@ -1,6 +1,14 @@
+body {
+    padding-top: 70px; 
+}
 .navbar{
+    background-color: white;
     margin-left: 60px;
     margin-right: 60px;
+    position: fixed;
+    top: 0;
+    width: 1397.99px;
+    z-index: 1000; 
 }
 .imgLogo{
     width: 90px;
@@ -19,7 +27,7 @@
     border-radius: 5px;
     padding: 6px;
     margin-left: 10px;
-    margin-right: -13px;
+    margin-right: -10px;
     width: 117px;
     cursor: pointer;
 }

@@ -21,7 +21,7 @@ function AboutUs() {
                           <p style={{marginBottom:'20px'}}> <strong>Business Name:</strong> LUXURY CARS</p>
                           <p style={{marginBottom:'20px'}}> <strong>Location:</strong> San José, Santa Ana, Costa Rica</p>
                           <p style={{marginBottom:'20px'}}> <strong>Email:</strong> contacto@luxurycars.com</p>
-                          <p style={{marginBottom:'20px'}}> <strong>Phone:</strong> +506 1234 5678</p>
+                          <p style={{marginBottom:'20px'}}> <strong>Phone:</strong> +506 8234 5678</p>
                           <p style={{marginBottom:'20px'}}> <strong>Business Type:</strong> Online car marketplace</p>
                           <p style={{marginBottom:'20px'}}> <strong>Description:</strong>  LUXURY CARS is a digital platform dedicated to facilitating the buying and selling of cars. Our users can create an account, post their cars for sale, or browse a wide selection of high-end vehicles, from luxury sedans to supercars. We focus on offering a simple, fast, and secure experience.</p>
                         </div>
