@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
 import FormContact from '../components/FormContact'
+import Footer from '../components/Footer'
 
 function Contact() {
   return (
@@ -11,6 +12,7 @@ function Contact() {
             <FormContact/>
           </div>
         </div>
+        <Footer/>
     </div>
   )
 }

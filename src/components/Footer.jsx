@@ -5,7 +5,6 @@ function Footer() {
     <footer style={{backgroundColor: '#333', color: '#fff', padding: '20px 60px'}}>
       <div style={{display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap'}}>
         
-        {/* About Us */}
         <div style={{flex: '1', minWidth: '200px', marginBottom: '20px'}}>
           <h3>About Us</h3>
           <p>
@@ -14,28 +13,25 @@ function Footer() {
           </p>
         </div>
 
-        {/* Services */}
-        <div style={{flex: '1', minWidth: '200px', marginBottom: '20px'}}>
+        <div style={{flex: '1', minWidth: '200px', marginBottom: '20px', marginLeft:'100px'}}>
           <h3>Services</h3>
           <ul style={{listStyleType: 'none', paddingLeft: '0'}}>
             <li><a href="/about" style={{color: '#fff'}}>About Us</a></li>
             <li><a href="/contact" style={{color: '#fff'}}>Contact Us</a></li>
             <li><a href="/add-car" style={{color: '#fff'}}>Add a Car</a></li>
-            <li><a href="/publications" style={{color: '#fff'}}>View Listings</a></li>
+            <li><a href="/editpost" style={{color: '#fff'}}>View Listings</a></li>
           </ul>
         </div>
 
-        {/* Contact Us */}
         <div style={{flex: '1', minWidth: '200px', marginBottom: '20px'}}>
           <h3>Contact Us</h3>
           <p>
             Santa Ana, San José, Costa Rica<br />
             Phone: +506 8234-5678<br />
-            Email: contact@luxurycars.cr
+            Email: contact@luxurycars.com
           </p>
         </div>
 
-        {/* Social Media */}
         <div style={{flex: '1', minWidth: '200px', marginBottom: '20px'}}>
           <h3>Follow Us</h3>
           <div style={{display: 'flex', gap: '10px'}}>
@@ -46,7 +42,6 @@ function Footer() {
         </div>
       </div>
       
-      {/* Footer Bottom */}
       <div style={{textAlign: 'center', marginTop: '20px', borderTop: '1px solid #fff', paddingTop: '10px'}}>
         <p>&copy; 2024 LUXURY CARS. All rights reserved.</p>
       </div>
