@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function ContactoHome() {
+  const navigate = useNavigate();
   return (
     <div className="d-flex justify-content-center">
       <div className=" mb-3 border-top border-bottom" style={{ width: '100%', padding:'20px', marginLeft:'60px', marginRight:'60px', marginTop:'50px'}}>
@@ -22,7 +24,7 @@ function ContactoHome() {
                     <tr>
                       <th scope="row">1</th>
                       <td>Email</td>
-                      <td>contacto@luxurycars.com</td>
+                      <td>contact@luxurycars.com</td>
                       <td><i class="bi bi-envelope-fill fs-5"></i></td>
                     </tr>
                     <tr>
