@@ -39,7 +39,7 @@ function NavBar() {
         <>
             <nav className="navbar navbar-expand-lg border-bottom">
                 <div className="container-fluid">
-                    <a className="navbar-brand" onClick={() => { navigate("/") }} href="#"><img className='imgLogo' src="src/assets/Captura_de_pantalla_2024-06-29_181844-transformed.png" alt="logo" /></a>
+                    <a style={{marginLeft:'10px'}} className="navbar-brand" onClick={() => { navigate("/") }} href="#"><img className='imgLogo' src="src/assets/Logo-luxuryCar.png" alt="logo" /></a>
                     <button 
                         className="navbar-toggler" 
                         type="button" 

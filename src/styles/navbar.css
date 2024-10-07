@@ -10,6 +10,27 @@ body {
     width: 1397.99px;
     z-index: 1000; 
 }
+@media (max-width: 1268px) {
+    .navbar {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: calc(100% - 40px); 
+    }
+}
+@media (max-width: 768px) {
+    .navbar {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: calc(100% - 40px); 
+    }
+}
+@media (max-width: 480px) {
+    .navbar {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: calc(100% - 20px);
+    }
+}
 .imgLogo{
     width: 90px;
     padding: 0%;

@@ -48,7 +48,7 @@ function AboutUs() {
                         </div>
                       </div>
                     </div>
-                    <div className="row g-3" style={{ display: 'flex', alignItems: 'center', marginTop: '40px' }}>
+                    <div className="row g-3" style={{ display: 'flex', alignItems: 'center', marginTop: '40px', }}>
                       <div className="col-md-4">
                         <h4>Business Hours:</h4>
                         <ul>

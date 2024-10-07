@@ -19,7 +19,7 @@ function Footer() {
             <li><a href="/about" style={{color: '#fff'}}>About Us</a></li>
             <li><a href="/contact" style={{color: '#fff'}}>Contact Us</a></li>
             <li><a href="/add-car" style={{color: '#fff'}}>Add a Car</a></li>
-            <li><a href="/editpost" style={{color: '#fff'}}>View Listings</a></li>
+            <li><a href="/editpost" style={{color: '#fff'}}>My Publications</a></li>
           </ul>
         </div>
 
