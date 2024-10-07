@@ -45,8 +45,8 @@ class LoginView(APIView):
         
         if user is not None:
             # Si el usuario es autenticado, devolvemos el token o éxito
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key}, status=status.HTTP_200_OK)
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({'token': token.key,'id':user.id}, status=status.HTTP_200_OK)
         else:
             # Si falla la autenticación
             return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)

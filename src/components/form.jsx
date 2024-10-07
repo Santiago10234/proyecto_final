@@ -28,6 +28,7 @@ function Form() {
             // Si la respuesta es exitosa, redirigimos al Home
             if (response.status === 200) {
                 setSuccess("Usuario creado exitosamente.");
+                localStorage.setItem("id",response.data.id)
                 setError("");
                 // Redirige automáticamente a la página de login
                 setTimeout(() => {
