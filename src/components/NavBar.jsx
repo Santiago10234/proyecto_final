@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
     const navigate = useNavigate();
-    const usuarioIniciado = localStorage.getItem("usuario");
+    const usuarioIniciado = localStorage.getItem("id");
 
     // Estado local para la búsqueda
     const [searchTerm, setSearchTerm] = useState('');
