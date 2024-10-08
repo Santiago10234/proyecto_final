@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
+import '../styles/card.css'
 
 function EditPost() {
   const [cars, setCars] = useState([]);
@@ -40,23 +41,30 @@ function EditPost() {
 
   return (
     <div>
-      <NavBar />
-      <h1>Your Publications</h1>
-      <div>
-        {cars.length > 0 ? (
-          <ul>
-            {cars.map(car => (
-              <li key={car.id}>
-                {car.brand} {car.model} ({car.year}) - ${car.price}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No tienes publicaciones aún.</p>
-        )}
-      </div>
-      <Footer />
+    <NavBar />
+    <div className="row ContainerCard">
+      {cars.length > 0 ? (
+        cars.map(car => (
+          <div className="col-md-4" key={car.id}>
+            <div className="card" style={{ width: '18rem', marginBottom: '20px', marginTop: '20px' }}>
+              <img src={car.car_image} className="card-img-top" alt={`${car.brand} ${car.model}`} />
+              <div className="card-body">
+                <h5 className="card-title">{car.brand} {car.model}</h5>
+                <p className="card-text">Year: <strong>{car.year}</strong></p>
+                <p className="card-text">Mileage: <strong>{car.mileage} km</strong></p>
+                <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
+                <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
+                <p className="card-text">Price: <strong>$ {car.price}</strong></p>
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No tienes publicaciones aún.</p>
+      )}
     </div>
+    <Footer />
+  </div>
   );
 }
 
