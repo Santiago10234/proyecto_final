@@ -13,7 +13,8 @@ function FormForAdd() {
     transmission: '',
     car_image: null,
     price: "",
-    num_tel:""
+    num_tel:"",
+    owner:localStorage.getItem("id")
   });
 
   const navigate = useNavigate();  

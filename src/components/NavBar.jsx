@@ -9,6 +9,19 @@ function NavBar() {
     // Estado local para la búsqueda
     const [searchTerm, setSearchTerm] = useState('');
 
+    const closeSession = () => {
+        localStorage.clear(); // Limpia el localStorage
+        navigate("/login"); // Redirige a la página de login después de cerrar sesión
+    };
+
+    const handleAuthClick = () => {
+        if (usuarioIniciado) {
+            closeSession(); // Si el usuario ha iniciado sesión, cierra la sesión
+        } else {
+            navigate("/login"); // Si no ha iniciado sesión, redirige a la página de login
+        }
+    };
+
     // Función que maneja el submit del formulario de búsqueda
     const handleSearch = (e) => {
         e.preventDefault(); // Evita que la página se recargue
@@ -86,9 +99,9 @@ function NavBar() {
                             />
                             <button className="btn btn-outline-dark" type="submit">Search</button>
                             <div className='container-sing text-nowrap'>
-                                <a onClick={() => { navigate("/login") }} className="nav-link sing" href="#">{
+                                <a onClick={handleAuthClick} className="nav-link sing" href="#">{
                                     usuarioIniciado ? "Log out" : "Sign in"
-                            }</a>
+                                }</a>
                             </div>
                         </form>
                         

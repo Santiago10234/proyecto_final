@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -18,7 +19,7 @@ class Car(models.Model):
     num_tel = models.TextField(blank=True, null=True)
 
     # Relación con el usuario
-    owner = models.ForeignKey("usuarios.User", on_delete=models.CASCADE,default=1)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default=1)
 
     def __str__(self):
         return f'{self.brand} {self.model} ({self.year})'
