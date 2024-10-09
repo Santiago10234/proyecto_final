@@ -54,14 +54,14 @@ function FormForAdd() {
     });
 
     try {
-      await axios.post('http://localhost:8000/api/cars/', formDataToSend, {
+      const response = await axios.post('http://localhost:8000/api/cars/', formDataToSend, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       });
       
       setSuccess('Auto publicado exitosamente');
-
+      localStorage.setItem("carId",response.data.id)
       
       setTimeout(() => {
         navigate('/'); 

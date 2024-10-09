@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
-import '../styles/card.css'
+import '../styles/card.css';
 
 function EditPost() {
   const [cars, setCars] = useState([]);
@@ -10,7 +10,6 @@ function EditPost() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    
     const userId = localStorage.getItem('id');  // Obtener el id del usuario del localStorage
 
     if (userId) {
@@ -31,6 +30,19 @@ function EditPost() {
     }
   }, []);
 
+  const handleDelete = (carId) => {
+    axios.delete(`http://localhost:8000/api/cars/${carId}/`)
+      .then(response => {
+        // Actualizar el estado para eliminar el auto de la lista
+        setCars(cars.filter(car => car.id !== carId));
+        alert('Auto eliminado exitosamente.');
+      })
+      .catch(err => {
+        console.error('Error al eliminar:', err);
+        alert('Ocurrió un error al intentar eliminar el auto.');
+      });
+  };
+
   if (loading) {
     return <p>Cargando publicaciones...</p>;
   }
@@ -41,38 +53,51 @@ function EditPost() {
 
   return (
     <div>
-    <NavBar />
-    <div className="row ContainerCard">
-      {cars.length > 0 ? (
-        cars.map(car => (
-          <div className="col-md-4" key={car.id}>
-            <div className="card" style={{ width: '18rem', marginBottom: '20px', marginTop: '20px' }}>
-              <img src={car.car_image} className="card-img-top" alt={`${car.brand} ${car.model}`} />
-              <div className="card-body">
-                <h5 className="card-title">{car.brand} {car.model}</h5>
-                <p className="card-text">Year: <strong>{car.year}</strong></p>
-                <p className="card-text">Mileage: <strong>{car.mileage} km</strong></p>
-                <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
-                <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
-                <div style={{display:'flex', justifyContent:'space-between'}}>
-                <p className="card-text">Price: <strong>$ {car.price}</strong></p>
-                <div>
-                  <button style={{padding:'5px'}} className='btn btn-danger' >Eliminar</button>
-                  <button style={{padding:'5px', marginLeft:'5px'}} className='btn btn-success' >Editar</button>
-                </div>
+      <NavBar />
+      <div className="row ContainerCard">
+        {cars.length > 0 ? (
+          cars.map(car => (
+            <div className="col-md-4" key={car.id}>
+              <div className="card" style={{ width: '18rem', marginBottom: '20px', marginTop: '20px' }}>
+                <img src={car.car_image} className="card-img-top" alt={`${car.brand} ${car.model}`} />
+                <div className="card-body">
+                  <h5 className="card-title">{car.brand} {car.model}</h5>
+                  <p className="card-text">Year: <strong>{car.year}</strong></p>
+                  <p className="card-text">Mileage: <strong>{car.mileage} km</strong></p>
+                  <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
+                  <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
+                  <div className="d-flex justify-content-between">
+                    <p className="card-text">Price: <strong>$ {car.price}</strong></p>
+                    <div>
+                      <button
+                        style={{ padding: '5px' }}
+                        className='btn btn-danger'
+                        onClick={() => handleDelete(car.id)}
+                      >
+                        Eliminar
+                      </button>
+                      <button
+                        style={{ padding: '5px', marginLeft: '5px' }}
+                        className='btn btn-success'
+                      >
+                        Editar
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))
-      ) : (
-        <p>No tienes publicaciones aún.</p>
-      )}
+          ))
+        ) : (
+          <p>No tienes publicaciones aún.</p>
+        )}
+      </div>
+      <Footer />
     </div>
-    <Footer />
-  </div>
   );
 }
 
 export default EditPost;
+
+
 

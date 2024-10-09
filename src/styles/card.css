@@ -33,3 +33,9 @@
     display: flex;
     justify-content: space-between;
 }
+/* 
+.imgcard {
+    width: 287px; /* o cualquier tamaño que necesites 
+    height: 200px; /* o cualquier tamaño que necesites 
+    object-fit: cover; /* Esto asegura que la imagen se recorte para ajustarse al contenedor 
+  } */
