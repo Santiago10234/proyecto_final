@@ -54,7 +54,13 @@ function EditPost() {
                 <p className="card-text">Mileage: <strong>{car.mileage} km</strong></p>
                 <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
                 <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
                 <p className="card-text">Price: <strong>$ {car.price}</strong></p>
+                <div>
+                  <button style={{padding:'5px'}} className='btn btn-danger' >Eliminar</button>
+                  <button style={{padding:'5px', marginLeft:'5px'}} className='btn btn-success' >Editar</button>
+                </div>
+                </div>
               </div>
             </div>
           </div>
