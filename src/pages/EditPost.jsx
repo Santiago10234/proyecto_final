@@ -58,8 +58,8 @@ function EditPost() {
         {cars.length > 0 ? (
           cars.map(car => (
             <div className="col-md-4" key={car.id}>
-              <div className="card" style={{ width: '18rem', marginBottom: '20px', marginTop: '20px' }}>
-                <img src={car.car_image} className="card-img-top" alt={`${car.brand} ${car.model}`} />
+              <div className="card" style={{ width: '18rem', marginBottom: '20px', marginTop: '30px',marginLeft:'-12px' }}>
+                <img src={car.car_image} className="card-img-top imgcard" alt={`${car.brand} ${car.model}`} />
                 <div className="card-body">
                   <h5 className="card-title">{car.brand} {car.model}</h5>
                   <p className="card-text">Year: <strong>{car.year}</strong></p>
