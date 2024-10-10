@@ -14,7 +14,7 @@ function Form() {
 
         // Validación de campos vacíos
         if (!email || !password) {
-            setError("Todos los campos son obligatorios.");
+            setError("All fields are required.");
             return;
         }
 
@@ -27,7 +27,7 @@ function Form() {
 
             // Si la respuesta es exitosa, redirigimos al Home
             if (response.status === 200) {
-                setSuccess("Usuario creado exitosamente.");
+                setSuccess("User logged in successfully.");
                 localStorage.setItem("id",response.data.id)
                 setError("");
                 // Redirige automáticamente a la página de login
@@ -36,7 +36,7 @@ function Form() {
                 }, 2000);
             }
         } catch (err) {
-            setError("Usuario o contraseña incorrectos.");
+            setError("Incorrect username or password.");
         }
     };
 

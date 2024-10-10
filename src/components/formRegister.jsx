@@ -25,12 +25,12 @@ function FormRegister() {
         const { username,name, email, password } = formData;
 
         if (!name || !email || !password) {
-            setError("Todos los campos son obligatorios.");
+            setError("All fields are required.");
             return;
         }
 
         if (password.length < 8) {
-            setError("La contraseña debe tener al menos 8 caracteres.");
+            setError("Password must be at least 8 characters.");
             return;
         }
 
@@ -44,7 +44,7 @@ function FormRegister() {
             });
 
             if (response.status === 201) {
-                setSuccess("Usuario creado exitosamente.");
+                setSuccess("User created successfully.");
                 setError("");
                 // Redirige automáticamente a la página de login
                 setTimeout(() => {
@@ -52,7 +52,7 @@ function FormRegister() {
                 }, 2000); // Espera 2 segundos antes de redirigir, para mostrar el mensaje de éxito
             }
         } catch (err) {
-            setError(err.response?.data?.error || "Error al crear el usuario.");
+            setError(err.response?.data?.error || "Error creating user.");
         }
     };
 
