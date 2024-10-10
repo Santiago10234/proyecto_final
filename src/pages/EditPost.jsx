@@ -12,6 +12,8 @@ function EditPost() {
   const [showModal, setShowModal] = useState(false);
   const [selectedCar, setSelectedCar] = useState(null);  // Guardar los datos del auto seleccionado para editar
   const [formData, setFormData] = useState({});  // Estado para manejar los datos del formulario
+  const [alertMessage, setAlertMessage] = useState('');  // Estado para el mensaje de alerta
+  const [showAlertModal, setShowAlertModal] = useState(false);  // Estado para mostrar/ocultar el modal de alerta
 
   useEffect(() => {
     const userId = localStorage.getItem('id');  // Obtener el id del usuario del localStorage
@@ -37,11 +39,13 @@ function EditPost() {
     axios.delete(`http://localhost:8000/api/cars/${carId}/`)
       .then(response => {
         setCars(cars.filter(car => car.id !== carId));  // Eliminar el auto del estado después de una eliminación exitosa
-        alert('Auto eliminado exitosamente.');
+        setAlertMessage('Auto eliminado exitosamente.');
+        setShowAlertModal(true);  // Mostrar el modal con la alerta
       })
       .catch(err => {
         console.error('Error al eliminar:', err);
-        alert('Ocurrió un error al intentar eliminar el auto.');
+        setAlertMessage('Ocurrió un error al intentar eliminar el auto.');
+        setShowAlertModal(true);  // Mostrar el modal con el mensaje de error
       });
   };
 
@@ -65,19 +69,21 @@ function EditPost() {
   };
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:8000/api/cars/${selectedCar.id}/`, formData)  // Hacer la solicitud PUT
+    axios.put(`http://localhost:8000/api/cars/${selectedCar.id}/`, formData)
       .then(response => {
         // Actualizar la lista de autos con los datos actualizados
         const updatedCars = cars.map(car =>
           car.id === selectedCar.id ? response.data : car
         );
         setCars(updatedCars);
-        alert('Auto actualizado exitosamente.');
-        handleCloseModal();  // Cerrar el modal
+        setAlertMessage('Auto actualizado exitosamente.');
+        setShowAlertModal(true);  // Mostrar el modal con la alerta
+        handleCloseModal();  // Cerrar el modal de edición
       })
       .catch(err => {
         console.error('Error al actualizar:', err);
-        alert('Ocurrió un error al intentar actualizar el auto.');
+        setAlertMessage('Ocurrió un error al intentar actualizar el auto.');
+        setShowAlertModal(true);  // Mostrar el modal con el mensaje de error
       });
   };
 
@@ -222,6 +228,19 @@ function EditPost() {
           </Button>
           <Button variant="primary" onClick={handleUpdate}>
             Guardar Cambios
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Modal para alertas */}
+      <Modal show={showAlertModal} onHide={() => setShowAlertModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Notificación</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>{alertMessage}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowAlertModal(false)}>
+            Cerrar
           </Button>
         </Modal.Footer>
       </Modal>
