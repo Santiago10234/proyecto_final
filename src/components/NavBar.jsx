@@ -84,7 +84,7 @@ function NavBar() {
                             }
                             {usuarioIniciado &&
                             <li className="nav-item">
-                                <a onClick={() => { navigate("/editpost") }} className="nav-link active" href="#">Publications</a>
+                                <a onClick={() => { navigate("/editpost") }} className="nav-link active" href="#">My Publications</a>
                             </li>
                             }
                         </ul>
