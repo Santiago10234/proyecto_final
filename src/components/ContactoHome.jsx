@@ -10,7 +10,7 @@ function ContactoHome() {
           <div className="col-md-4">
             <img 
               style={{ minWidth: '240px', borderRadius:'15px'}} 
-              src="src/assets/ImagenContactos.webp" 
+              src="src\assets\preview.webp" 
               className="img-fluid " 
               alt="..."
             />
