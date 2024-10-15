@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import '../styles/navbar.css';
 import { useNavigate } from 'react-router-dom';
+import { traerCookie } from '../cookiesjs/cookies';
 
 function NavBar() {
     const navigate = useNavigate();
     const usuarioIniciado = localStorage.getItem("id");
-
+    const usuarioCookie = traerCookie("id")
     // Estado local para la búsqueda
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -24,12 +25,16 @@ function NavBar() {
 
     // Función que maneja el submit del formulario de búsqueda
     const handleSearch = (e) => {
-        e.preventDefault(); // Evita que la página se recargue
-
-        // Convertir el término de búsqueda a minúsculas para hacer la comparación más robusta
+        e.preventDefault();
+    
         const term = searchTerm.toLowerCase();
-
-        // Redirigir en función del término de búsqueda
+        const carBrands = [
+            'alfa romeo', 'aston martin', 'audi', 'bentley', 'bmw', 'cadillac',
+            'dodge', 'ferrari', 'ford', 'jaguar', 'lamborghini', 'land rover',
+            'lexus', 'maserati', 'mazda', 'mercedes benz', 'porsche', 'rolls royce',
+            'tesla', 'toyota', 'volvo'
+        ];
+    
         if (term === 'home') {
             navigate('/');
         } else if (term === 'about') {
@@ -40,13 +45,16 @@ function NavBar() {
             navigate('/addcar');
         } else if (term === 'publications' && usuarioIniciado) {
             navigate('/editpost');
+        } else if (carBrands.includes(term)) {
+            // Si coincide con una marca de autos, redirigir a la página de resultados
+            navigate(`/search/${term}`);
         } else {
-            alert('Página no encontrada. Intenta con Home, About, Contact, Add Car o Publications.');
+            alert('Página no encontrada. Intenta con Home, About, Contact, Add Car, Publications, o una marca de auto válida.');
         }
-
-        // Limpiar el campo de búsqueda después de realizar la búsqueda
+    
         setSearchTerm('');
     };
+    
 
     return (
         <>
@@ -77,12 +85,12 @@ function NavBar() {
                             <li className="nav-item">
                                 <a onClick={() => { navigate("/contact") }} className="nav-link active" href="#">Contact</a>
                             </li>
-                            {usuarioIniciado &&
+                            {usuarioCookie &&
                             <li className="nav-item">
                                 <a onClick={() => { navigate("/addcar") }} className="nav-link active" href="#">Add Car</a>
                             </li>
                             }
-                            {usuarioIniciado &&
+                            {usuarioCookie &&
                             <li className="nav-item">
                                 <a onClick={() => { navigate("/editpost") }} className="nav-link active" href="#">My Publications</a>
                             </li>

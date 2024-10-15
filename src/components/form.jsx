@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import { crearCookie } from '../cookiesjs/cookies';
 function Form() {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
@@ -29,6 +29,7 @@ function Form() {
             if (response.status === 200) {
                 setSuccess("User logged in successfully.");
                 localStorage.setItem("id",response.data.id)
+                crearCookie("id",response.data.id,7)
                 setError("");
                 // Redirige automáticamente a la página de login
                 setTimeout(() => {

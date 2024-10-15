@@ -4,6 +4,16 @@ from .serializers import CarSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework.decorators import api_view
+
+
+@api_view(['GET'])
+def search_cars(request, brand):
+    brand = brand.lower()  # Convertir el parámetro de la URL a minúsculas
+    cars = Car.objects.filter(brand__iexact=brand)  # Filtrar autos por marca, ignorando mayúsculas/minúsculas
+    serializer = CarSerializer(cars, many=True)
+    return Response(serializer.data)
+
 
 class CarListCreateAPIView(generics.ListCreateAPIView):
     queryset = Car.objects.all()

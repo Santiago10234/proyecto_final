@@ -2,8 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.documentation import include_docs_urls
 from usuarios.views import RegistroView, LoginView
-from autos.views import CarListCreateAPIView, UserCarListByIDAPIView, CarDetailAPIView
-
+from autos.views import CarListCreateAPIView, UserCarListByIDAPIView, CarDetailAPIView,search_cars
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
@@ -13,4 +12,5 @@ urlpatterns = [
     path('api/cars/', CarListCreateAPIView.as_view(), name='car_list_create'),
     path('user/cars/<int:user_id>', UserCarListByIDAPIView.as_view(), name='user-car-list-by-id'),
     path('api/cars/<int:pk>/', CarDetailAPIView.as_view(), name='car_detail'),  # Ruta para detalle, actualización y eliminación
+    path('api/cars/search/<str:brand>/', search_cars, name='search_cars'), # Ruta para listar autos con filtro de marca
 ]
