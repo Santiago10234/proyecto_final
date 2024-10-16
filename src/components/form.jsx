@@ -30,6 +30,7 @@ function Form() {
                 setSuccess("User logged in successfully.");
                 localStorage.setItem("id",response.data.id)
                 crearCookie("id",response.data.id,7)
+                crearCookie("token",response.data.tokenAcc)
                 setError("");
                 // Redirige automáticamente a la página de login
                 setTimeout(() => {

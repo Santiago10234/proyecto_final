@@ -1,5 +1,6 @@
 from pathlib import Path
 
+from datetime import timedelta # Importación, para poder tiempos dentro de este archivo
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -27,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt', # Para poder usar el jwt
     'coreapi',
     'api',
     'usuarios',
@@ -140,6 +142,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "rest_framework.schemas.coreapi.AutoSchema",
+    
+    # Indica a las clases que tipo de autenticación usar
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
 
 
@@ -151,6 +158,13 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
 ]
+
+
+# Configuración del JWT 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
 
 CORS_ALLOW_HEADERS = [
     "accept",

@@ -6,6 +6,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework import status
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
+from rest_framework_simplejwt.tokens import RefreshToken
 
 User = get_user_model()  
 
@@ -44,9 +45,10 @@ class LoginView(APIView):
         user = authenticate(request, username=user.username, password=password)
         
         if user is not None:
+            refresh = RefreshToken.for_user(user)
             # Si el usuario es autenticado, devolvemos el token o éxito
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'token': token.key,'id':user.id}, status=status.HTTP_200_OK)
+            return Response({'id':user.id,'tokenAcc':str(refresh.access_token),'tokenRef':str(refresh)}, status=status.HTTP_200_OK)
         else:
             # Si falla la autenticación
             return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)
