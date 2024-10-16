@@ -4,6 +4,7 @@ import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import '../styles/card.css';
 import { Modal, Button, Form } from 'react-bootstrap';  // Importar componentes de Bootstrap para el modal
+import { traerCookie } from '../cookiesjs/cookies';
 
 function EditPost() {
   const [cars, setCars] = useState([]);
@@ -14,12 +15,19 @@ function EditPost() {
   const [formData, setFormData] = useState({});  // Estado para manejar los datos del formulario
   const [alertMessage, setAlertMessage] = useState('');  // Estado para el mensaje de alerta
   const [showAlertModal, setShowAlertModal] = useState(false);  // Estado para mostrar/ocultar el modal de alerta
+  const token = traerCookie('token')
 
   useEffect(() => {
+    
     const userId = localStorage.getItem('id');  // Obtener el id del usuario del localStorage
-
+    console.log(token);
     if (userId) {
-      axios.get(`http://localhost:8000/user/cars/${userId}`)
+      // axios.get(`http://localhost:8000/user/cars/${userId}`)
+      axios.get(`http://localhost:8000/user/cars/${userId}`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then(response => {
           setCars(response.data); // Actualizar el estado con los datos recibidos
           setLoading(false);      // Desactivar el estado de carga

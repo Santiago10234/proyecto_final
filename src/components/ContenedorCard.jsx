@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Card from './Card';
-
+import { traerCookie } from '../cookiesjs/cookies';
 function ContenedorCard() {
   const [cars, setCars] = useState([]);
-
+  
+  const token = traerCookie('token')
   useEffect(() => {
     const fetchCars = async () => {
       try {

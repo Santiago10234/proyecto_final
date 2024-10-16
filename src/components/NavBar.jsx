@@ -60,7 +60,7 @@ function NavBar() {
         <>
             <nav className="navbar navbar-expand-lg border-bottom">
                 <div className="container-fluid">
-                    <a style={{marginLeft:'10px'}} className="navbar-brand" onClick={() => { navigate("/") }} href="#"><img className='imgLogo' src="src/assets/Logo-luxuryCar.png" alt="logo" /></a>
+                    <a style={{marginLeft:'10px'}} className="navbar-brand" onClick={() => { navigate("/") }} href="#"><img className='imgLogo' src="../src/assets/Logo-luxuryCar.png" alt="a" /></a>
                     <button 
                         className="navbar-toggler" 
                         type="button" 

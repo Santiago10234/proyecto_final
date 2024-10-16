@@ -19,13 +19,16 @@ class CarListCreateAPIView(generics.ListCreateAPIView):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
     
+    
+    
 class CarDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
     
+    
 class UserCarListByIDAPIView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
     serializer_class = CarSerializer
-
     def get_queryset(self):
         user_id = self.kwargs.get('user_id') # Obtener el user_id desde los argumentos de la URL
         cars = Car.objects.filter(owner_id=user_id) # Filtrar los autos que pertenecen al usuario con ese ID

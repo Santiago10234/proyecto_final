@@ -24,11 +24,11 @@ function SearchResults() {
     return (
         <div>
             <NavBar/>
-            <h1>Resultados para: {brand.toUpperCase()}</h1>
+            <h2 style={{marginTop:'40px', marginLeft:'60px'}}>Results for: {brand.toUpperCase()}</h2>
             <div className="car-results ContainerCard">
                 {cars.length > 0 ? (
                     cars.map(car => (
-                        <div className="card" style={{ width: '18rem', marginBottom:'20px', marginTop:'20px' }}>
+                        <div key={car.id} className="card" style={{ width: '18rem', marginBottom:'20px', marginTop:'20px' }}>
                             <img src={car.car_image} className="card-img-top imgcard" alt={`${car.brand} ${car.model}`} />
                             <div className="card-body">
                                 <h5 className="card-title">{car.brand} {car.model}</h5>
