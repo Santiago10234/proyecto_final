@@ -16,7 +16,7 @@ function App() {
       <NavBar/>
       <Carousel/>
       <div style={{marginLeft: '60px', marginRight: '60px'}}>
-        <h1 class="border-bottom" style={{ textAlign: 'center', marginBottom: '50px', marginTop: '50px' }}>Cars For Sale</h1>
+        <h1 className="border-bottom" style={{ textAlign: 'center', marginBottom: '50px', marginTop: '50px' }}>Cars For Sale</h1>
       </div>
       <ContenedorCard/>
       <Pagination/>

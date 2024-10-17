@@ -58,7 +58,7 @@ function FormRegister() {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form className="containerRegister" onSubmit={handleSubmit}>
                 <div className="titulo">
                     <h1>Get Started Now</h1>
                 </div>
