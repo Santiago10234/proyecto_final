@@ -24,13 +24,13 @@ function ContactoHome() {
                     <tr>
                       <th scope="row">1</th>
                       <td>Email</td>
-                      <td>contact@luxurycars.com</td>
+                      <td><a className="nav-link" href="https://www.google.com/intl/es/gmail/about/">contact@luxurycars.com</a></td>
                       <td><i className="bi bi-envelope-fill fs-5"></i></td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>WhatsApp</td>
-                      <td>+506 8234 5678</td>
+                      <td><a className="nav-link" href="https://web.whatsapp.com/">+506 8234 5678</a></td>
                       <td><i className="bi bi-whatsapp fs-5"></i></td>
                     </tr>
                     <tr>

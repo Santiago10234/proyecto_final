@@ -18,7 +18,7 @@ function Footer() {
           <ul style={{listStyleType: 'none', paddingLeft: '0'}}>
             <li><a href="/about" style={{color: '#fff'}}>About Us</a></li>
             <li><a href="/contact" style={{color: '#fff'}}>Contact Us</a></li>
-            <li><a href="/add-car" style={{color: '#fff'}}>Add a Car</a></li>
+            <li><a href="/addcar" style={{color: '#fff'}}>Add Car</a></li>
             <li><a href="/editpost" style={{color: '#fff'}}>My Publications</a></li>
           </ul>
         </div>
