@@ -5,6 +5,7 @@ import NavBar from '../components/NavBar';
 import '../styles/card.css';
 import Footer from '../components/Footer';
 import ContactoHome from '../components/ContactoHome';
+import Marcas from '../components/marcas';
 
 function SearchResults() {
     const { brand } = useParams(); // Obtenemos la marca desde la URL
@@ -44,6 +45,7 @@ function SearchResults() {
                     <p>No se encontraron resultados para esta marca.</p>
                 )}
             </div>
+            <Marcas/>
             <ContactoHome/>
             <Footer/>
         </div>
