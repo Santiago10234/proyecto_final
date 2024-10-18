@@ -11,6 +11,7 @@ import About from './pages/About.jsx';
 import EditPost from './pages/EditPost.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx'; // Importa el PrivateRoute
 import SearchResults from './pages/SearchResults.jsx'; // Importa el nuevo componente de resultados de búsqueda
+import CarDetails from './pages/CarDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/search/:brand",  // Nueva ruta para la búsqueda por marca
     element: <SearchResults />  // Carga el componente de resultados
+  },
+  {
+    path: "/carDetails",
+    element: <CarDetails/>
   }
 ]);
 
