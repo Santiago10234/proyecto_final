@@ -5,6 +5,10 @@
     align-items: baseline;
     justify-content: space-between;
     grid-template-columns: repeat(4, 18rem);
+
+}
+.card{
+    transition: 0.5s;
 }
 @media (max-width: 1200px) {
     .ContainerCard {
@@ -37,4 +41,9 @@
     width: 286.5px; /* o cualquier tamaño que necesites */
     height: 200px; /* o cualquier tamaño que necesites */
     object-fit: cover; /* Esto asegura que la imagen se recorte para ajustarse al contenedor */
+    
   } 
+.card:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+}

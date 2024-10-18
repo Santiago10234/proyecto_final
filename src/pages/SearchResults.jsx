@@ -12,6 +12,10 @@ function SearchResults() {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    
+    useEffect(() => {
         // Hacemos la petición al backend para obtener los autos que coincidan con la marca
         axios.get(`http://localhost:8000/api/cars/search/${brand}/`)
             .then(response => {
