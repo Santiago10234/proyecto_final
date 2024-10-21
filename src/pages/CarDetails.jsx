@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import ContactoHome from '../components/ContactoHome'
 import Marcas from '../components/marcas'
 
 function CarDetails({ car }) {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
   return (
     <div>
         <NavBar/>
