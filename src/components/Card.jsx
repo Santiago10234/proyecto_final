@@ -2,9 +2,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';  // Reemplaza useHistory con useNavigate
 import '../styles/card.css';
 
-function Card({ car }) {
+function Card({ car,carSpecs }) {
   const navigate = useNavigate();  // Cambia useHistory por useNavigate
-
+  
+  function viewDetails() {
+    navigate("/carDetails")
+  }
 
   return (
     <div className="card" style={{ width: '18rem', marginBottom:'20px', marginTop:'20px', position: 'relative' }}>
@@ -16,7 +19,7 @@ function Card({ car }) {
         <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
         <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
         <p className="card-text">Price: <strong>$ {car.price}</strong></p>
-        <button className="view-more-btn">Ver más</button>
+        <button onClick={carSpecs} className="view-more-btn">Ver más</button>
       </div>
     </div>
   );
