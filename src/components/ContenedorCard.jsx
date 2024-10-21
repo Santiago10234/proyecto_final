@@ -27,8 +27,13 @@ function ContenedorCard() {
         <Card key={car.id} car={car} carSpecs={()=>{
           localStorage.setItem("img",car.car_image)
           localStorage.setItem("brand",car.brand)
+          localStorage.setItem("model",car.model)
+          localStorage.setItem("year",car.year)
+          localStorage.setItem("mileage",car.mileage)
+          localStorage.setItem("num_tel",car.num_tel)
+          localStorage.setItem("price",car.price)
+          localStorage.setItem("transmission",car.transmission)
           navigate("/carDetails")
-
         }} />
       ))}
     </div>

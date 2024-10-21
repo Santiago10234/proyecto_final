@@ -10,16 +10,18 @@ function CarDetails({ car }) {
         <NavBar/>
         <div style={{display:'flex', justifyContent:'center'}}>
             <div style={{width:'90%'}} class="card mb-3">
-                <img src={localStorage.getItem("img")} class="card-img-top" alt="..."/>
+                <img style={{height:'500px', objectFit:'cover'}} src={localStorage.getItem("img")} class="card-img-top" alt="..."/>
                 <div class="card-body">
                 <div  style={{display:'flex', justifyContent:'center'}}>
         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', width:'80%'}}>
             <div className="card-body">
                 <h5 className="card-title"></h5>
-                <p className="card-text">Year: </p>
-                <p className="card-text">Mileage: </p>
-                <p className="card-text">Transmission:</p>
-                <p className="card-text">Phone number:</p>
+                <p className="card-text">Year: {localStorage.getItem("year")} </p>
+                <p className="card-text">Model: {localStorage.getItem("model")} </p>
+                <p className="card-text">Mileage: {localStorage.getItem("mileage")} </p>
+                <p className="card-text">Transmission: {localStorage.getItem("transmission")} </p>
+                <p className="card-text">Phone number: {localStorage.getItem("num_tel")} </p>
+                <p className="card-text">Price: ${localStorage.getItem("price")} </p>
             </div>
             <div>
                 <form action="">

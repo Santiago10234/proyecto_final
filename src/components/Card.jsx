@@ -18,7 +18,7 @@ function Card({ car,carSpecs }) {
         <p className="card-text">Mileage: <strong>{car.mileage} km</strong></p>
         <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
         <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
-        <p className="card-text">Price: <strong>$ {car.price}</strong></p>
+        <p className="card-text">Price: <strong>${car.price}</strong></p>
         <button onClick={carSpecs} className="view-more-btn">Ver más</button>
       </div>
     </div>
