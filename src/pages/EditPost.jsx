@@ -44,7 +44,11 @@ function EditPost() {
   }, []);
 
   const handleDelete = (carId) => {
-    axios.delete(`http://localhost:8000/api/cars/${carId}/`)
+    axios.delete(`http://localhost:8000/api/cars/${carId}/`,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(response => {
         setCars(cars.filter(car => car.id !== carId));  // Eliminar el auto del estado después de una eliminación exitosa
         setAlertMessage('Auto eliminado exitosamente.');
@@ -77,7 +81,11 @@ function EditPost() {
   };
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:8000/api/cars/${selectedCar.id}/`, formData)
+    axios.put(`http://localhost:8000/api/cars/${selectedCar.id}/`, formData,{
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(response => {
         // Actualizar la lista de autos con los datos actualizados
         const updatedCars = cars.map(car =>

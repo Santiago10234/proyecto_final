@@ -19,12 +19,12 @@ function CarDetails({ car }) {
         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', width:'80%'}}>
             <div className="card-body">
                 <h5 className="card-title"></h5>
-                <p className="card-text">Year: {localStorage.getItem("year")} </p>
-                <p className="card-text">Model: {localStorage.getItem("model")} </p>
-                <p className="card-text">Mileage: {localStorage.getItem("mileage")} </p>
-                <p className="card-text">Transmission: {localStorage.getItem("transmission")} </p>
-                <p className="card-text">Phone number: {localStorage.getItem("num_tel")} </p>
-                <p className="card-text">Price: ${localStorage.getItem("price")} </p>
+                <p className="card-text">Year: <strong>{localStorage.getItem("year")}</strong> </p>
+                <p className="card-text">Model: <strong>{localStorage.getItem("model")}</strong> </p>
+                <p className="card-text">Mileage: <strong>{localStorage.getItem("mileage")}</strong> </p>
+                <p className="card-text">Transmission: <strong>{localStorage.getItem("transmission")}</strong> </p>
+                <p className="card-text">Phone number: <strong>{localStorage.getItem("num_tel")}</strong> </p>
+                <p className="card-text">Price: <strong>${localStorage.getItem("price")}</strong> </p>
             </div>
             <div>
                 <form action="">

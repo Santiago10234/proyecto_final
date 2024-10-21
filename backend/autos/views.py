@@ -24,6 +24,7 @@ class CarListCreateAPIView(generics.ListCreateAPIView):
 class CarDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Car.objects.all()
     serializer_class = CarSerializer
+    permission_classes = [IsAuthenticated]
     
     
 class UserCarListByIDAPIView(generics.ListAPIView):
