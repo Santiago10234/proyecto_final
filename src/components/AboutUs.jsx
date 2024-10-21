@@ -48,7 +48,7 @@ function AboutUs() {
                         </div>
                       </div>
                     </div>
-                    <div className="row g-3" style={{ display: 'flex', alignItems: 'center', marginTop: '40px', }}>
+                    <div className="row g-3" style={{ display: 'flex', alignItems: 'center', marginTop: '40px', justifyContent:'space-between' }}>
                       <div className="col-md-4">
                         <h4>Business Hours:</h4>
                         <ul>
@@ -59,7 +59,7 @@ function AboutUs() {
                         <h4>Location:</h4>
                         <p>We are located in Santa Ana, San José, Costa Rica, an easily accessible area for those who wish to get in-person assistance or make inquiries.</p>
                       </div>
-                      <div className="col-md-8">
+                      <div className="col-md-5">
                         <iframe style={{ width: '500px', height: '350px', borderRadius: '10px', marginLeft: '20px', boxShadow: '0px 0px 5px 0px' }} src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d450.0486228409496!2d-84.18891758914882!3d9.936502390822797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2scr!4v1727883990750!5m2!1ses-419!2scr" loading="lazy"></iframe>
                       </div>
                       
