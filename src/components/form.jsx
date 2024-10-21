@@ -31,6 +31,7 @@ function Form() {
                 localStorage.setItem("id",response.data.id)
                 crearCookie("id",response.data.id,7)
                 crearCookie("token",response.data.tokenAcc)
+                crearCookie("refreshToken", response.data.refreshToken, 7); // Almacena el token de refresh
                 setError("");
                 // Redirige automáticamente a la página de login
                 setTimeout(() => {

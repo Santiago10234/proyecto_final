@@ -12,9 +12,9 @@ function CarDetails({ car }) {
     <div>
         <NavBar/>
         <div style={{display:'flex', justifyContent:'center'}}>
-            <div style={{width:'90%'}} class="card mb-3">
-                <img style={{height:'500px', objectFit:'cover'}} src={localStorage.getItem("img")} class="card-img-top" alt="..."/>
-                <div class="card-body">
+            <div style={{width:'90%'}} className="card mb-3">
+                <img style={{height:'500px', objectFit:'cover'}} src={localStorage.getItem("img")} className="card-img-top" alt="..."/>
+                <div className="card-body">
                 <div  style={{display:'flex', justifyContent:'center'}}>
         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', width:'80%'}}>
             <div className="card-body">

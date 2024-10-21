@@ -18,6 +18,6 @@ export default function ScrollButton() {
     };
     window.addEventListener("scroll", toggleVisible);
     return (
-        <div className='topArrow' onClick={scrollToTop} style={{ display: visible ? "inline" : "none" }}><i class="bi bi-arrow-up-circle-fill"></i></div>
+        <div className='topArrow' onClick={scrollToTop} style={{ display: visible ? "inline" : "none" }}><i className="bi bi-arrow-up-circle-fill"></i></div>
     );
 }
