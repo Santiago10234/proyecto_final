@@ -18,7 +18,7 @@ function CarDetails({ car }) {
                 <div  style={{display:'flex', justifyContent:'center'}}>
         <div style={{display:'flex', alignItems:'center', justifyContent:'space-between', width:'80%'}}>
             <div className="card-body">
-                <h5 className="card-title"></h5>
+                <h3 className="card-title">Details</h3>
                 <p className="card-text">Year: <strong>{localStorage.getItem("year")}</strong> </p>
                 <p className="card-text">Model: <strong>{localStorage.getItem("model")}</strong> </p>
                 <p className="card-text">Mileage: <strong>{localStorage.getItem("mileage")}</strong> </p>
@@ -28,11 +28,14 @@ function CarDetails({ car }) {
             </div>
             <div>
                 <form action="">
-                    <h3>Solicite la prueba de manejo</h3>
+                    <h3>Request test drive</h3>
+                    <p>Your Email</p>
+                    <input className='form-control' style={{marginTop:'-10px'}} type="Email" />
                     <p>Full Name</p>
-                    <input className='form-control' type="Name" />
-                    <p>Fecha y hora deseada</p>
-                    <input className='form-control' type="datetime-local" />
+                    <input className='form-control' style={{marginTop:'-10px'}} type="Name" />
+                    <p>Desired date and time</p>
+                    <input className='form-control' style={{marginTop:'-10px'}} type="datetime-local" />
+                    <button className='btn btn-dark btnPost' style={{width:'100%', marginTop:'10px'}}>Request</button>
                 </form>
             </div>
         </div>
