@@ -20,7 +20,7 @@ function CarDetails({ car }) {
             <div className="card-body">
                 <h3 className="card-title">Details</h3>
                 <p className="card-text">Year: <strong>{localStorage.getItem("year")}</strong> </p>
-                <p className="card-text">Model: <strong>{localStorage.getItem("model")}</strong> </p>
+                <p className="card-text">Brand: <strong>{localStorage.getItem("brand")} {localStorage.getItem("model")}</strong> </p>
                 <p className="card-text">Mileage: <strong>{localStorage.getItem("mileage")}</strong> </p>
                 <p className="card-text">Transmission: <strong>{localStorage.getItem("transmission")}</strong> </p>
                 <p className="card-text">Phone number: <strong>{localStorage.getItem("num_tel")}</strong> </p>
