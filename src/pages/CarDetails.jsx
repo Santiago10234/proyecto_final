@@ -27,12 +27,12 @@ function CarDetails({ car }) {
                 <p className="card-text">Price: <strong>${localStorage.getItem("price")}</strong> </p>
             </div>
             <div>
-                <form action="">
+                <form style={{width:'350px'}}>
                     <h3>Request test drive</h3>
                     <p>Your Email</p>
-                    <input className='form-control' style={{marginTop:'-10px'}} type="Email" />
+                    <input className='form-control' style={{marginTop:'-10px'}} type="Email" placeholder='Email' />
                     <p>Full Name</p>
-                    <input className='form-control' style={{marginTop:'-10px'}} type="Name" />
+                    <input className='form-control' style={{marginTop:'-10px'}} type="Name" placeholder='Name' />
                     <p>Desired date and time</p>
                     <input className='form-control' style={{marginTop:'-10px'}} type="datetime-local" />
                     <button className='btn btn-dark btnPost' style={{width:'100%', marginTop:'10px'}}>Request</button>
