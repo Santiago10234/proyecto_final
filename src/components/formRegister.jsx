@@ -8,7 +8,8 @@ function FormRegister() {
         username: "",
         name: "",
         email: "",
-        password: ""
+        password: "",
+        userType: "user" // Valor por defecto
     });
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -22,7 +23,7 @@ function FormRegister() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { username,name, email, password } = formData;
+        const { username, name, email, password, userType } = formData;
 
         if (!name || !email || !password) {
             setError("All fields are required.");
@@ -36,11 +37,12 @@ function FormRegister() {
 
         try {
             const response = await axios.post("http://localhost:8000/api/registro/", {
-                username:name,
+                username: name,
                 first_name: name.split(" ")[0],
                 last_name: name,
                 email,
-                password
+                password,
+                is_superuser: userType === "superuser" // Indica si es un superusuario
             });
 
             if (response.status === 201) {
@@ -49,7 +51,7 @@ function FormRegister() {
                 // Redirige automáticamente a la página de login
                 setTimeout(() => {
                     navigate("/login");
-                }, 2000); // Espera 2 segundos antes de redirigir, para mostrar el mensaje de éxito
+                }, 2000); // Espera 2 segundos antes de redirigir
             }
         } catch (err) {
             setError(err.response?.data?.error || "Error creating user.");
@@ -60,54 +62,67 @@ function FormRegister() {
         <>
             <form className="containerRegister" onSubmit={handleSubmit}>
                 <div>
-                <div className="titulo">
-                    <h1>Get Started Now</h1>
-                </div>
-                {error && <p className="alert alert-danger">{error}</p>}
-                {success && <p className="alert alert-success">{success}</p>}
-                <div className="mb-3">
-                    <label htmlFor="exampleInputName1" className="form-label">Name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="exampleInputName1"
-                        name="name"
-                        placeholder="Enter your Name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-                    <input
-                        type="email"
-                        className="form-control"
-                        id="exampleInputEmail1"
-                        name="email"
-                        placeholder="Enter your email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                    />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-                    <input
-                        type="password"
-                        className="form-control"
-                        id="exampleInputPassword1"
-                        name="password"
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleInputChange}
-                    />
-                </div>
+                    <div className="titulo">
+                        <h1>Get Started Now</h1>
+                    </div>
+                    {error && <p className="alert alert-danger">{error}</p>}
+                    {success && <p className="alert alert-success">{success}</p>}
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputName1" className="form-label">Name</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="exampleInputName1"
+                            name="name"
+                            placeholder="Enter your Name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
+                        <input
+                            type="email"
+                            className="form-control"
+                            id="exampleInputEmail1"
+                            name="email"
+                            placeholder="Enter your email"
+                            value={formData.email}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                        <input
+                            type="password"
+                            className="form-control"
+                            id="exampleInputPassword1"
+                            name="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleInputChange}
+                        />
+                    </div>
+                    <div className="mb-3">
+                        <label htmlFor="userType" className="form-label">User Type</label>
+                        <select
+                            className="form-select"
+                            id="userType"
+                            name="userType"
+                            value={formData.userType}
+                            onChange={handleInputChange}
+                        >
+                            <option value="user">User</option>
+                            <option value="superuser">Superuser</option>
+                        </select>
+                    </div>
 
-                <button type="submit" className="btn btn-dark btninicio">Register</button>
+                    <button type="submit" className="btn btn-dark btninicio">Register</button>
 
-                <div className="sign_Up">
-                    <p>Have an account?</p>
-                    <a style={{cursor:'pointer'}} onClick={() => navigate("/login")} className="link-offset-2 link-underline link-underline-opacity-0 link">Sign In</a>
-                </div>
+                    <div className="sign_Up">
+                        <p>Have an account?</p>
+                        <a style={{ cursor: 'pointer' }} onClick={() => navigate("/login")} className="link-offset-2 link-underline link-underline-opacity-0 link">Sign In</a>
+                    </div>
                 </div>
             </form>
         </>
@@ -115,5 +130,6 @@ function FormRegister() {
 }
 
 export default FormRegister;
+
 
 
