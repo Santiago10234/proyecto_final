@@ -59,6 +59,7 @@ function FormRegister() {
     return (
         <>
             <form className="containerRegister" onSubmit={handleSubmit}>
+                <div>
                 <div className="titulo">
                     <h1>Get Started Now</h1>
                 </div>
@@ -106,6 +107,7 @@ function FormRegister() {
                 <div className="sign_Up">
                     <p>Have an account?</p>
                     <a style={{cursor:'pointer'}} onClick={() => navigate("/login")} className="link-offset-2 link-underline link-underline-opacity-0 link">Sign In</a>
+                </div>
                 </div>
             </form>
         </>

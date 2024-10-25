@@ -23,3 +23,10 @@ class Car(models.Model):
 
     def __str__(self):
         return f'{self.brand} {self.model} ({self.year})'
+
+class TestDrive(models.Model):
+    userDrive = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    car = models.ForeignKey(Car,on_delete=models.CASCADE)
+    date = models.DateTimeField()
+    
+        

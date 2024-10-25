@@ -25,6 +25,8 @@ function ContenedorCard() {
     <div className="ContainerCard">
       {cars.map(car => (
         <Card key={car.id} car={car} carSpecs={()=>{
+          console.log('sada');
+          localStorage.setItem("id",car.id)
           localStorage.setItem("img",car.car_image)
           localStorage.setItem("brand",car.brand)
           localStorage.setItem("model",car.model)

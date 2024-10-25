@@ -1,6 +1,6 @@
 from rest_framework import generics
-from .models import Car
-from .serializers import CarSerializer
+from .models import Car, TestDrive
+from .serializers import CarSerializer, TestDriveSerializer
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
@@ -38,3 +38,8 @@ class UserCarListByIDAPIView(generics.ListAPIView):
             return Response({'detail': 'No se encontraron publicaciones para este usuario.'}, status=status.HTTP_404_NOT_FOUND)
 
         return cars
+    
+
+class TestDriveView(generics.ListCreateAPIView):
+    queryset = TestDrive.objects.all()
+    serializer_class = TestDriveSerializer
