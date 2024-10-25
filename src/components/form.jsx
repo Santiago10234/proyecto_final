@@ -32,6 +32,7 @@ function Form() {
                 crearCookie("id",response.data.id,7)
                 crearCookie("token",response.data.tokenAcc)
                 crearCookie("refreshToken", response.data.refreshToken, 7); // Almacena el token de refresh
+                crearCookie("isSuperuser", response.data.super, 7);
                 setError("");
                 // Redirige automáticamente a la página de login
                 setTimeout(() => {

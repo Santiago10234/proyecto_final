@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAdminUser
 
 User = get_user_model()  
 
-  # Vista para registro del usuario o super usuario 
+  # Vista para registro del usuario o superusuario 
 class RegistroView(APIView):
 
     def post(self, request):
@@ -32,7 +32,7 @@ class RegistroView(APIView):
         if User.objects.filter(email=email).exists():
             return Response({'error': 'El correo electrónico ya está registrado'}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Crear usuario o super usuario
+        # Crear usuario o superusuario
         try:
             if is_superuser:
                 nuevo_usuario = User.objects.create_superuser(
@@ -73,7 +73,7 @@ class LoginView(APIView):
             refresh = RefreshToken.for_user(user)
             # Si el usuario es autenticado, devolvemos el token o éxito
             token, created = Token.objects.get_or_create(user=user)
-            return Response({'id':user.id,'tokenAcc':str(refresh.access_token),'tokenRef':str(refresh)}, status=status.HTTP_200_OK)
+            return Response({'id':user.id,'super': user.is_superuser,'tokenAcc':str(refresh.access_token),'tokenRef':str(refresh)}, status=status.HTTP_200_OK)
         else:
             # Si falla la autenticación
             return Response({'error': 'Credenciales incorrectas'}, status=status.HTTP_400_BAD_REQUEST)
