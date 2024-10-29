@@ -1,4 +1,3 @@
-// carActions.js
 import axios from 'axios';
 
 export const handleDelete = (carId, token, setCars, setAlertMessage, setShowAlertModal) => {
