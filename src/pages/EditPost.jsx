@@ -3,7 +3,7 @@ import axios from 'axios';
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import '../styles/card.css';
-import { Modal, Button, Form } from 'react-bootstrap';  // Importar componentes de Bootstrap para el modal
+import { Modal, Button, Form } from 'react-bootstrap';
 import { traerCookie } from '../cookiesjs/cookies';
 
 function EditPost() {
@@ -11,65 +11,71 @@ function EditPost() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const [selectedCar, setSelectedCar] = useState(null);  // Guardar los datos del auto seleccionado para editar
-  const [formData, setFormData] = useState({});  // Estado para manejar los datos del formulario
-  const [alertMessage, setAlertMessage] = useState('');  // Estado para el mensaje de alerta
-  const [showAlertModal, setShowAlertModal] = useState(false);  // Estado para mostrar/ocultar el modal de alerta
-  const token = traerCookie('token')
+  const [selectedCar, setSelectedCar] = useState(null);
+  const [formData, setFormData] = useState({});
+  const [alertMessage, setAlertMessage] = useState('');
+  const [showAlertModal, setShowAlertModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);  // Nuevo estado para el modal de confirmación
+  const [carIdToDelete, setCarIdToDelete] = useState(null); // ID del auto a eliminar
+  const token = traerCookie('token');
 
   useEffect(() => {
-    
-    const userId = localStorage.getItem('id');  // Obtener el id del usuario del localStorage
-    console.log(token);
+    const userId = localStorage.getItem('id');
     if (userId) {
-      // axios.get(`http://localhost:8000/user/cars/${userId}`)
-      axios.get(`http://localhost:8000/user/cars/${userId}`,{
+      axios.get(`http://localhost:8000/user/cars/${userId}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
         .then(response => {
-          setCars(response.data); // Actualizar el estado con los datos recibidos
-          setLoading(false);      // Desactivar el estado de carga
+          setCars(response.data);
+          setLoading(false);
         })
         .catch(err => {
           console.error('Error:', err);
           setError('Ocurrió un error al cargar las publicaciones.');
-          setLoading(false);      // Desactivar el estado de carga en caso de error
+          setLoading(false);
         });
     } else {
       setError('No se encontró el ID del usuario.');
-      setLoading(false);  // Desactivar el estado de carga si no hay user_id
+      setLoading(false);
     }
-  }, []);
+  }, [token]);
 
-  const handleDelete = (carId) => {
-    axios.delete(`http://localhost:8000/api/cars/${carId}/`,{
+  const handleDeleteRequest = (carId) => {
+    setCarIdToDelete(carId);  // Guardar el ID del auto a eliminar
+    setShowConfirmModal(true); // Mostrar el modal de confirmación
+  };
+
+  const handleDelete = () => {
+    axios.delete(`http://localhost:8000/api/cars/${carIdToDelete}/`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
-        setCars(cars.filter(car => car.id !== carId));  // Eliminar el auto del estado después de una eliminación exitosa
+        setCars(cars.filter(car => car.id !== carIdToDelete));
         setAlertMessage('Auto eliminado exitosamente.');
-        setShowAlertModal(true);  // Mostrar el modal con la alerta
+        setShowAlertModal(true);
+        setShowConfirmModal(false); // Cerrar el modal de confirmación
       })
       .catch(err => {
         console.error('Error al eliminar:', err);
         setAlertMessage('Ocurrió un error al intentar eliminar el auto.');
-        setShowAlertModal(true);  // Mostrar el modal con el mensaje de error
+        setShowAlertModal(true);
+        setShowConfirmModal(false); // Cerrar el modal de confirmación
       });
   };
 
   const handleEdit = (car) => {
-    setSelectedCar(car);  // Guardar el auto seleccionado
-    setFormData(car);     // Inicializar el formulario con los datos del auto
-    setShowModal(true);   // Mostrar el modal
+    setSelectedCar(car);
+    setFormData(car);
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowModal(false);  // Cerrar el modal
-    setSelectedCar(null); // Limpiar el auto seleccionado
+    setShowModal(false);
+    setSelectedCar(null);
   };
 
   const handleInputChange = (e) => {
@@ -81,25 +87,24 @@ function EditPost() {
   };
 
   const handleUpdate = () => {
-    axios.put(`http://localhost:8000/api/cars/${selectedCar.id}/`, formData,{
+    axios.put(`http://localhost:8000/api/cars/${selectedCar.id}/`, formData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
-        // Actualizar la lista de autos con los datos actualizados
         const updatedCars = cars.map(car =>
           car.id === selectedCar.id ? response.data : car
         );
         setCars(updatedCars);
         setAlertMessage('Auto actualizado exitosamente.');
-        setShowAlertModal(true);  // Mostrar el modal con la alerta
-        handleCloseModal();  // Cerrar el modal de edición
+        setShowAlertModal(true);
+        handleCloseModal();
       })
       .catch(err => {
         console.error('Error al actualizar:', err);
         setAlertMessage('Ocurrió un error al intentar actualizar el auto.');
-        setShowAlertModal(true);  // Mostrar el modal con el mensaje de error
+        setShowAlertModal(true);
       });
   };
 
@@ -132,14 +137,14 @@ function EditPost() {
                       <button
                         style={{ padding: '5px' }}
                         className='btn btn-danger'
-                        onClick={() => handleDelete(car.id)}
+                        onClick={() => handleDeleteRequest(car.id)} // Llama a la función para mostrar el modal de confirmación
                       >
                         Eliminar
                       </button>
                       <button
                         style={{ padding: '5px', marginLeft: '5px' }}
                         className='btn btn-success'
-                        onClick={() => handleEdit(car)}  // Abrir el modal para editar
+                        onClick={() => handleEdit(car)}
                       >
                         Editar
                       </button>
@@ -244,6 +249,24 @@ function EditPost() {
           </Button>
           <Button variant="primary" onClick={handleUpdate}>
             Guardar Cambios
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Modal para confirmación de eliminación */}
+      <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirmar Eliminación</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          ¿Estás seguro de que deseas eliminar este auto?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>
+            Cancelar
+          </Button>
+          <Button variant="danger" onClick={handleDelete}>
+            Eliminar
           </Button>
         </Modal.Footer>
       </Modal>
