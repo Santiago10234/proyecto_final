@@ -2,9 +2,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Marcas = () => {
     const navigate = useNavigate();
-
+    // Función que redirige a la página de búsqueda de una marca específica
     const handleRedirect = (brand) => {
-        navigate(`/search/${brand}`);
+        navigate(`/search/${brand}`); // Redirige a la ruta correspondiente a la marca
     };
 
     return (

@@ -4,19 +4,20 @@ import Card from './Card';
 import { useNavigate } from 'react-router-dom';
 
 function ContenedorCard() {
-  const [cars, setCars] = useState([]);
+  const [cars, setCars] = useState([]); // Estado para almacenar los datos de los autos.
   const navigate = useNavigate();
-  
+  // useEffect se ejecuta al montar el componente para cargar los datos de los autos.
   useEffect(() => {
+    // Función asíncrona que obtiene los datos de los autos mediante una solicitud GET al backend.
     const fetchCars = async () => {
       try {
         const response = await axios.get('http://localhost:8000/api/cars/');
-        setCars(response.data);
+        setCars(response.data); // Actualiza el estado de cars con la lista de autos obtenida.
       } catch (error) {
         console.error('Error al obtener las publicaciones:', error);
       }
     };
-
+    // Llama a la función fetchCars.
     fetchCars();
   }, []);
 

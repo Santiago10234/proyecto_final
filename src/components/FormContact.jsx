@@ -3,45 +3,48 @@ import emailjs from 'emailjs-com';
 import "../styles/contact.css";
 
 function FormContact() {
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
-
+  const [error, setError] = useState(""); // Estado para mensajes de error
+  const [success, setSuccess] = useState(""); // Estado para mensajes de éxito
+  // Estado para guardar los datos ingresados en el formulario
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   });
-
+  // Función para manejar cambios en los inputs del formulario y actualizar el estado formData
   const handleChange = (e) => {
+    // Extrae el nombre y el valor del campo que activó el evento
     const { name, value } = e.target;
+    // Actualiza el estado formData con el nuevo valor del campo correspondiente
     setFormData({
       ...formData,
       [name]: value,
     });
   };
-
+  // Función que se activa al enviar el formulario
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // Resetea mensajes de error y éxito antes de procesar el envío
     setError("");
     setSuccess("");
-
+    // Validación: Si algún campo está vacío, muestra un mensaje de error
     if (!formData.name || !formData.email || !formData.message) {
       setError("Por favor, completa todos los campos.");
       return;
     }
-
+    // Configuración de los parámetros necesarios para enviar el correo a través de EmailJS
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
     };
-
+    // Llamada a EmailJS para enviar el correo
     emailjs.send('service_m9nq4ya', 'template_r3l8kk9', templateParams, 'nyzyvYkC35zpBA7Jq')
       .then((response) => {
+        // Si el envío es exitoso, muestra un mensaje de éxito y resetea los campos del formulario
         setSuccess('Correo enviado exitosamente!');
-        setError("");
-
+        setError(""); // Limpia el mensaje de error
+        // Resetea los campos del formulario
         setFormData({
           name: '',
           email: '',
@@ -49,8 +52,9 @@ function FormContact() {
         });
       })
       .catch((error) => {
+        // Si ocurre un error, muestra un mensaje de error
         setError('Hubo un error al enviar el correo. Intenta de nuevo.');
-        setSuccess("");
+        setSuccess("");// Limpia el mensaje de éxito
       });
   };
 

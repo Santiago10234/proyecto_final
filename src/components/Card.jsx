@@ -4,20 +4,27 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import '../styles/card.css';
 import { traerCookie } from '../cookiesjs/cookies';
 import { handleDelete, handleUpdate } from './carActions';
-
+/**
+ * Componente para mostrar los detalles de un auto en formato de tarjeta.
+ * Permite a un administrador editar o eliminar el auto, con modales de confirmación y edición.
+ *
+ * car - Información del auto (marca, modelo, año, etc.).
+ * carSpecs - Función para ver más detalles del auto.
+ * setCars - Función para actualizar el estado de la lista de autos.
+ */
 function Card({ car, carSpecs, setCars }) {
-  const [showModal, setShowModal] = useState(false);
-  const [showConfirmDelete, setShowConfirmDelete] = useState(false); // Nuevo estado para el modal de confirmación
-  const [formData, setFormData] = useState(car);
-  const [alertMessage, setAlertMessage] = useState('');
-  const [showAlertModal, setShowAlertModal] = useState(false);
-  const admin = traerCookie("isSuperuser");
-  const token = traerCookie('token');
-
+  const [showModal, setShowModal] = useState(false); // Estado para el modal de edición
+  const [showConfirmDelete, setShowConfirmDelete] = useState(false); // Estado para el modal de confirmación de eliminación
+  const [formData, setFormData] = useState(car); // Estado para almacenar los datos de edición del auto
+  const [alertMessage, setAlertMessage] = useState(''); // Mensaje de alerta para notificaciones
+  const [showAlertModal, setShowAlertModal] = useState(false); // Estado para el modal de alertas
+  const admin = traerCookie("isSuperuser"); // Verificar si el usuario es administrador
+  const token = traerCookie('token'); // Obtener token de autenticación del usuario
+  // Actualizar los datos del formulario cuando el auto cambie
   useEffect(() => {
     setFormData(car);
   }, [car]);
-
+  // Maneja los cambios en los campos del formulario de edición.
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -26,14 +33,14 @@ function Card({ car, carSpecs, setCars }) {
     });
   };
 
-  const handleCloseModal = () => setShowModal(false);
-  const handleCloseConfirmDelete = () => setShowConfirmDelete(false); // Cerrar modal de confirmación
-
+  const handleCloseModal = () => setShowModal(false); ; // Cierra el modal de edición
+  const handleCloseConfirmDelete = () => setShowConfirmDelete(false);  // Cierra el modal de confirmación de eliminación
+  // Llama a la función handleDelete para eliminar el auto y cierra el modal de confirmación.
   const deleteCar = () => {
     handleDelete(car.id, token, setCars, setAlertMessage, setShowAlertModal);
     handleCloseConfirmDelete(); // Cerrar modal de confirmación después de eliminar
   };
-
+  // Llama a la función handleUpdate para actualizar el auto y cierra el modal de edición.
   const updateCar = () => {
     handleUpdate(car.id, formData, token, setCars, setAlertMessage, setShowAlertModal, handleCloseModal);
   };

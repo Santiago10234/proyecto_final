@@ -4,11 +4,12 @@ import axios from 'axios';
 import { crearCookie } from '../cookiesjs/cookies';
 function Form() {
     const navigate = useNavigate();
+    // Definición de estados para email, password, error y success.
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState("");
-
+    // Función asincrónica para manejar el envío del formulario.
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -19,27 +20,30 @@ function Form() {
         }
 
         try {
-            // Realizamos la petición a la API para autenticar al usuario
+            // Solicitud POST a la API para autenticar al usuario.
             const response = await axios.post('http://localhost:8000/api/login/', {
                 email: email,
                 password: password,
             });
 
-            // Si la respuesta es exitosa, redirigimos al Home
+            // Si la autenticación es exitosa (código de estado 200), redirige al usuario.
             if (response.status === 200) {
                 setSuccess("User logged in successfully.");
+                // Almacena el ID del usuario en localStorage y en una cookie.
                 localStorage.setItem("id",response.data.id)
                 crearCookie("id",response.data.id,7)
+                // Crea cookies para el token de acceso y el token de actualización.
                 crearCookie("token",response.data.tokenAcc)
                 crearCookie("refreshToken", response.data.refreshToken, 7); // Almacena el token de refresh
                 crearCookie("isSuperuser", response.data.super, 7);
-                setError("");
-                // Redirige automáticamente a la página de login
+                setError(""); // Limpia cualquier mensaje de error.
+                // Redirige al usuario a la página de inicio después de 2 segundos.
                 setTimeout(() => {
                     navigate("/");
                 }, 2000);
             }
         } catch (err) {
+            // Si ocurre un error, muestra un mensaje de error.
             setError("Incorrect username or password.");
         }
     };

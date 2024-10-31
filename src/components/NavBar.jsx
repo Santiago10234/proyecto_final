@@ -6,15 +6,15 @@ import { traerCookie } from '../cookiesjs/cookies';
 function NavBar() {
     const navigate = useNavigate();
     const usuarioIniciado = localStorage.getItem("id");
-    const usuarioCookie = traerCookie("id")
-    // Estado local para la búsqueda
-    const [searchTerm, setSearchTerm] = useState('');
+    const usuarioCookie = traerCookie("id") // Obtiene el ID del usuario de las cookies
 
+    const [searchTerm, setSearchTerm] = useState('');// Estado para almacenar el término de búsqueda
+    // Función para cerrar sesión
     const closeSession = () => {
         localStorage.clear(); // Limpia el localStorage
         navigate("/login"); // Redirige a la página de login después de cerrar sesión
     };
-
+    // Función para manejar clic en autenticación (iniciar/cerrar sesión)
     const handleAuthClick = () => {
         if (usuarioIniciado) {
             closeSession(); // Si el usuario ha iniciado sesión, cierra la sesión
@@ -27,14 +27,14 @@ function NavBar() {
     const handleSearch = (e) => {
         e.preventDefault();
     
-        const term = searchTerm.toLowerCase();
+        const term = searchTerm.toLowerCase();// Convierte el término de búsqueda a minúsculas
         const carBrands = [
             'alfa romeo', 'aston martin', 'audi', 'bentley', 'bmw', 'cadillac',
             'dodge', 'ferrari', 'ford', 'jaguar', 'lamborghini', 'land rover',
             'lexus', 'maserati', 'mazda', 'mercedes benz', 'porsche', 'rolls royce',
             'tesla', 'toyota', 'volvo'
         ];
-    
+        // Maneja la navegación según el término de búsqueda
         if (term === 'home') {
             navigate('/');
         } else if (term === 'about') {
@@ -48,11 +48,11 @@ function NavBar() {
         } else if (carBrands.includes(term)) {
             // Si coincide con una marca de autos, redirigir a la página de resultados
             navigate(`/search/${term}`);
-        } else {
+        } else {  // Muestra un mensaje de alerta si no se encuentra la página
             alert('Página no encontrada. Intenta con Home, About, Contact, Add Car, Publications, o una marca de auto válida.');
         }
     
-        setSearchTerm('');
+        setSearchTerm(''); // Limpia el término de búsqueda
     };
     
 
