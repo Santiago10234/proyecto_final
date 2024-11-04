@@ -106,6 +106,23 @@ function CarDetails({ car }) {
                             </div>
                         </div>
                     </div>
+                    <div className="comment-section mt-4 p-3 border rounded bg-light">
+                <h3>Comments</h3>
+                <ul className="list-unstyled">
+
+                </ul>
+                <form>
+                    <div className="form-group">
+                        <textarea
+                            className="form-control"
+                            placeholder="Leave a comment"
+                            required
+                            rows="4"
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-primary mt-2">Submit</button>
+                </form>
+            </div>
                 </div>
             </div>
             <Marcas />
