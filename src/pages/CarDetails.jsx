@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import NavBar from '../components/NavBar'
-import Footer from '../components/Footer'
-import ContactoHome from '../components/ContactoHome'
-import Marcas from '../components/marcas'
-import '../styles/carsDetails.css'
+import NavBar from '../components/NavBar';
+import Footer from '../components/Footer';
+import ContactoHome from '../components/ContactoHome';
+import Marcas from '../components/marcas';
+import '../styles/carsDetails.css';
 import { traerCookie } from '../cookiesjs/cookies';
 
 function CarDetails({ car }) {
     const [email, setEmail] = useState('');
     const [fullName, setFullName] = useState('');
     const [desiredDate, setDesiredDate] = useState('');
+    const [message, setMessage] = useState('');
+    const [messageType, setMessageType] = useState('');
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -18,19 +20,15 @@ function CarDetails({ car }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const userId = traerCookie("id") 
-        const carId = localStorage.getItem("id")
-        const idUserInt = parseInt(userId)
-        const idCarInt = parseInt(carId)
+        const userId = traerCookie("id");
+        const carId = localStorage.getItem("id");
+        const idUserInt = parseInt(userId);
+        const idCarInt = parseInt(carId);
         const testDriveData = {
             userDrive: idUserInt,
             car: idCarInt,
             date: desiredDate,
         };
-        console.log('Test Drive Data:', testDriveData);
-        console.log('User ID:', userId);
-        console.log('Car ID:', carId);
-        console.log('Desired Date:', desiredDate);
 
         try {
             const response = await axios.post('http://localhost:8000/api/cars/testDrive', testDriveData, {
@@ -38,18 +36,17 @@ function CarDetails({ car }) {
                     'Content-Type': 'application/json',
                 }
             });
-            console.log(`RESPUESTA ${response}`);
-            
 
             if (response.status === 201) {
-                // Maneja la respuesta de éxito (ej. mostrar un mensaje al usuario)
-                alert('Test drive request submitted successfully!');
+                setMessage('Test drive request submitted successfully!');
+                setMessageType('success'); // Tipo de mensaje para la alerta
+                setTimeout(() => setMessage(''), 2000); // Oculta el mensaje después de 2 segundos
             }
-            console.log(response);
         } catch (error) {
             console.error('Error submitting request:', error);
-            console.error('Response data:', error.response.data)
-            alert('Failed to submit the request. Please try again.');
+            setMessage('Failed to submit the request. Please try again.');
+            setMessageType('danger'); // Tipo de mensaje para error
+            setTimeout(() => setMessage(''), 2000); // Oculta el mensaje después de 2 segundos
         }
     };
 
@@ -102,27 +99,15 @@ function CarDetails({ car }) {
                                         />
                                         <button className='btn btn-dark btnPost' style={{ width: '100%', marginTop: '10px' }} type="submit">Request</button>
                                     </form>
+                                    {message && (
+                                        <div className={`alert alert-${messageType} mt-3`} role="alert">
+                                            {message}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div className="comment-section mt-4 p-3 border rounded bg-light">
-                <h3>Comments</h3>
-                <ul className="list-unstyled">
-
-                </ul>
-                <form>
-                    <div className="form-group">
-                        <textarea
-                            className="form-control"
-                            placeholder="Leave a comment"
-                            required
-                            rows="4"
-                        />
-                    </div>
-                    <button type="submit" className="btn btn-primary mt-2">Submit</button>
-                </form>
-            </div>
                 </div>
             </div>
             <Marcas />
@@ -132,5 +117,4 @@ function CarDetails({ car }) {
     )
 }
 
-export default CarDetails
-
+export default CarDetails;
