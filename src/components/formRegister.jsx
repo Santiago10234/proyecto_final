@@ -8,8 +8,7 @@ function FormRegister() {
         username: "",
         name: "",
         email: "",
-        password: "",
-        userType: "user" // Valor por defecto
+        password: ""
     });
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -23,7 +22,7 @@ function FormRegister() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { username, name, email, password, userType } = formData;
+        const { name, email, password } = formData;
 
         if (!name || !email || !password) {
             setError("All fields are required.");
@@ -41,8 +40,7 @@ function FormRegister() {
                 first_name: name.split(" ")[0],
                 last_name: name,
                 email,
-                password,
-                is_superuser: userType === "superuser" // Indica si es un superusuario
+                password
             });
 
             if (response.status === 201) {
@@ -103,19 +101,6 @@ function FormRegister() {
                             onChange={handleInputChange}
                         />
                     </div>
-                    <div className="mb-3">
-                        <label htmlFor="userType" className="form-label">User Type</label>
-                        <select
-                            className="form-select"
-                            id="userType"
-                            name="userType"
-                            value={formData.userType}
-                            onChange={handleInputChange}
-                        >
-                            <option value="user">User</option>
-                            <option value="superuser">Superuser</option>
-                        </select>
-                    </div>
 
                     <button type="submit" className="btn btn-dark btninicio">Register</button>
 
@@ -130,6 +115,3 @@ function FormRegister() {
 }
 
 export default FormRegister;
-
-
-
