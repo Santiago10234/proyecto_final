@@ -71,13 +71,13 @@ function EditPost() {
     })
     .then(response => {
       setCars(cars.filter(car => car.id !== carIdToDelete)); // Elimina el auto del estado
-      setAlertMessage('Auto eliminado exitosamente.'); // Define el mensaje de éxito
+      setAlertMessage('Car deleted successfully.'); // Define el mensaje de éxito
       setShowAlertModal(true); // Muestra el modal de alerta
       setShowConfirmModal(false); // Cierra el modal de confirmación
     })
     .catch(err => {
       console.error('Error al eliminar:', err); // Muestra el error en la consola
-      setAlertMessage('Ocurrió un error al intentar eliminar el auto.'); // Define el mensaje de error
+      setAlertMessage('An error occurred while trying to delete the car.'); // Define el mensaje de error
       setShowAlertModal(true); // Muestra el modal de alerta
       setShowConfirmModal(false); // Cierra el modal de confirmación
     });
@@ -117,13 +117,13 @@ function EditPost() {
         car.id === selectedCar.id ? response.data : car // Actualiza el auto en el estado
       );
       setCars(updatedCars); // Guarda los autos actualizados en el estado
-      setAlertMessage('Auto actualizado exitosamente.'); // Define el mensaje de éxito
+      setAlertMessage('Car updated successfully.'); // Define el mensaje de éxito
       setShowAlertModal(true); // Muestra el modal de alerta
       handleCloseModal(); // Cierra el modal de edición
     })
     .catch(err => {
       console.error('Error al actualizar:', err); // Muestra el error en la consola
-      setAlertMessage('Ocurrió un error al intentar actualizar el auto.'); // Define el mensaje de error
+      setAlertMessage('An error occurred while trying to update the car.'); // Define el mensaje de error
       setShowAlertModal(true); // Muestra el modal de alerta
     });
   };
@@ -161,14 +161,14 @@ function EditPost() {
                         className='btn btn-danger'
                         onClick={() => handleDeleteRequest(car.id)} // Llama a la función para mostrar el modal de confirmación
                       >
-                        Eliminar
+                        Delete
                       </button>
                       <button
                         style={{ padding: '5px', marginLeft: '5px' }}
                         className='btn btn-success'
                         onClick={() => handleEdit(car)}
                       >
-                        Editar
+                        Edit
                       </button>
                     </div>
                   </div>
@@ -186,12 +186,12 @@ function EditPost() {
       {/* Modal para editar */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar Auto</Modal.Title>
+          <Modal.Title>Edit Auto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId="formBrand">
-              <Form.Label>Marca</Form.Label>
+              <Form.Label>Brand</Form.Label>
               <Form.Control
                 type="text"
                 name="brand"
@@ -201,7 +201,7 @@ function EditPost() {
             </Form.Group>
 
             <Form.Group controlId="formModel">
-              <Form.Label>Modelo</Form.Label>
+              <Form.Label>Model</Form.Label>
               <Form.Control
                 type="text"
                 name="model"
@@ -211,7 +211,7 @@ function EditPost() {
             </Form.Group>
 
             <Form.Group controlId="formYear">
-              <Form.Label>Año</Form.Label>
+              <Form.Label>Year</Form.Label>
               <Form.Control
                 type="number"
                 name="year"
@@ -221,7 +221,7 @@ function EditPost() {
             </Form.Group>
 
             <Form.Group controlId="formMileage">
-              <Form.Label>Kilometraje</Form.Label>
+              <Form.Label>Mileage</Form.Label>
               <Form.Control
                 type="number"
                 name="mileage"
@@ -231,7 +231,7 @@ function EditPost() {
             </Form.Group>
 
             <Form.Group controlId="formPrice">
-              <Form.Label>Precio</Form.Label>
+              <Form.Label>Price</Form.Label>
               <Form.Control
                 type="number"
                 name="price"
@@ -241,7 +241,7 @@ function EditPost() {
             </Form.Group>
 
             <Form.Group controlId="formTransmission">
-              <Form.Label>Transmisión</Form.Label>
+              <Form.Label>Transmission</Form.Label>
               <Form.Control
                 as="select"
                 name="transmission"
@@ -249,13 +249,13 @@ function EditPost() {
                 onChange={handleInputChange}
               >
                 <option value="manual">Manual</option>
-                <option value="automatic">Automática</option>
-                <option value="semi-automatic">Semi-Automática</option>
+                <option value="automatic">Automatic</option>
+                <option value="semi-automatic">Semiautomatic</option>
               </Form.Control>
             </Form.Group>
 
             <Form.Group controlId="formNumTel">
-              <Form.Label>Número de Teléfono</Form.Label>
+              <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
                 name="num_tel"
@@ -267,10 +267,10 @@ function EditPost() {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
-            Cerrar
+          Close
           </Button>
           <Button variant="primary" onClick={handleUpdate}>
-            Guardar Cambios
+          Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
@@ -278,17 +278,17 @@ function EditPost() {
       {/* Modal para confirmación de eliminación */}
       <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Confirmar Eliminación</Modal.Title>
+          <Modal.Title>Confirm Deletion</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          ¿Estás seguro de que deseas eliminar este auto?
+        Are you sure you want to remove this car?
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>
-            Cancelar
+          Cancel
           </Button>
           <Button variant="danger" onClick={handleDelete}>
-            Eliminar
+          Delete
           </Button>
         </Modal.Footer>
       </Modal>
@@ -296,12 +296,12 @@ function EditPost() {
       {/* Modal para alertas */}
       <Modal show={showAlertModal} onHide={() => setShowAlertModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Notificación</Modal.Title>
+          <Modal.Title>Notification</Modal.Title>
         </Modal.Header>
         <Modal.Body>{alertMessage}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowAlertModal(false)}>
-            Cerrar
+          Close
           </Button>
         </Modal.Footer>
       </Modal>

@@ -55,7 +55,7 @@ function Card({ car, carSpecs, setCars }) {
         <p className="card-text">Transmission: <strong>{car.transmission}</strong></p>
         <p className="card-text">Phone number: <strong>{car.num_tel}</strong></p>
         <p className="card-text">Price: <strong>${car.price}</strong></p>
-        <button onClick={carSpecs} className="view-more-btn">Ver más</button>
+        <button onClick={carSpecs} style={{width:'105px'}} className="view-more-btn">see more</button>
         {admin && (
           <div style={{ marginTop: '10px' }}>
             <Button onClick={() => setShowConfirmDelete(true)} className="btn btn-danger">Delete</Button>
@@ -67,17 +67,17 @@ function Card({ car, carSpecs, setCars }) {
       {/* Modal para confirmar eliminación */}
       <Modal show={showConfirmDelete} onHide={handleCloseConfirmDelete}>
         <Modal.Header closeButton>
-          <Modal.Title>Confirmar Eliminación</Modal.Title>
+          <Modal.Title>Confirm Deletion</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          ¿Estás seguro de que deseas eliminar este auto?
+        Are you sure you want to remove this car?
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseConfirmDelete}>
-            Cancelar
+          Cancel
           </Button>
           <Button variant="danger" onClick={deleteCar}>
-            Eliminar
+          Delete
           </Button>
         </Modal.Footer>
       </Modal>
@@ -85,12 +85,12 @@ function Card({ car, carSpecs, setCars }) {
       {/* Modal para editar */}
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Editar Auto</Modal.Title>
+          <Modal.Title>Edit Auto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId="formBrand">
-              <Form.Label>Marca</Form.Label>
+              <Form.Label>Brand</Form.Label>
               <Form.Control
                 type="text"
                 name="brand"
@@ -100,7 +100,7 @@ function Card({ car, carSpecs, setCars }) {
             </Form.Group>
 
             <Form.Group controlId="formModel">
-              <Form.Label>Modelo</Form.Label>
+              <Form.Label>Model</Form.Label>
               <Form.Control
                 type="text"
                 name="model"
@@ -110,7 +110,7 @@ function Card({ car, carSpecs, setCars }) {
             </Form.Group>
 
             <Form.Group controlId="formYear">
-              <Form.Label>Año</Form.Label>
+              <Form.Label>Year</Form.Label>
               <Form.Control
                 type="number"
                 name="year"
@@ -120,7 +120,7 @@ function Card({ car, carSpecs, setCars }) {
             </Form.Group>
 
             <Form.Group controlId="formMileage">
-              <Form.Label>Kilometraje</Form.Label>
+              <Form.Label>Mileage</Form.Label>
               <Form.Control
                 type="number"
                 name="mileage"
@@ -130,7 +130,7 @@ function Card({ car, carSpecs, setCars }) {
             </Form.Group>
 
             <Form.Group controlId="formPrice">
-              <Form.Label>Precio</Form.Label>
+              <Form.Label>Price</Form.Label>
               <Form.Control
                 type="number"
                 name="price"
@@ -140,7 +140,7 @@ function Card({ car, carSpecs, setCars }) {
             </Form.Group>
 
             <Form.Group controlId="formTransmission">
-              <Form.Label>Transmisión</Form.Label>
+              <Form.Label>Transmission</Form.Label>
               <Form.Control
                 as="select"
                 name="transmission"
@@ -154,7 +154,7 @@ function Card({ car, carSpecs, setCars }) {
             </Form.Group>
 
             <Form.Group controlId="formNumTel">
-              <Form.Label>Número de Teléfono</Form.Label>
+              <Form.Label>Phone Number</Form.Label>
               <Form.Control
                 type="text"
                 name="num_tel"
@@ -166,10 +166,10 @@ function Card({ car, carSpecs, setCars }) {
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
-            Cerrar
+          Close
           </Button>
           <Button variant="primary" onClick={updateCar}>
-            Guardar Cambios
+          Save Changes
           </Button>
         </Modal.Footer>
       </Modal>
@@ -177,12 +177,12 @@ function Card({ car, carSpecs, setCars }) {
       {/* Modal para alertas */}
       <Modal show={showAlertModal} onHide={() => setShowAlertModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Notificación</Modal.Title>
+          <Modal.Title>Notification</Modal.Title>
         </Modal.Header>
         <Modal.Body>{alertMessage}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowAlertModal(false)}>
-            Cerrar
+          Close
           </Button>
         </Modal.Footer>
       </Modal>
