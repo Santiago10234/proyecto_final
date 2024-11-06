@@ -7,24 +7,30 @@ import Footer from '../components/Footer';
 import ContactoHome from '../components/ContactoHome';
 import Marcas from '../components/marcas';
 
+// Define el componente SearchResults, que se encarga de mostrar los resultados de búsqueda de autos por marca
 function SearchResults() {
-    const { brand } = useParams(); // Obtenemos la marca desde la URL
+    // Extrae el parámetro de marca desde la URL
+    const { brand } = useParams(); 
+    // Define el estado para almacenar los autos que coinciden con la búsqueda
     const [cars, setCars] = useState([]);
 
+    // useEffect para desplazar la página al inicio cuando el componente se monta
     useEffect(() => {
-        window.scrollTo(0, 0);
+        window.scrollTo(0, 0); // Coloca la posición del scroll en la parte superior de la página
     }, []);
     
+    // useEffect que se ejecuta cuando el valor de "brand" cambia
     useEffect(() => {
-        // Hacemos la petición al backend para obtener los autos que coincidan con la marca
+        // Realiza una solicitud GET al backend para obtener los autos que coincidan con la marca proporcionada en la URL
         axios.get(`http://localhost:8000/api/cars/search/${brand}/`)
             .then(response => {
-                setCars(response.data); // Guardamos los autos en el estado
+                setCars(response.data); // Almacena los autos obtenidos en el estado
             })
             .catch(error => {
+                // Muestra en la consola un mensaje de error si falla la solicitud
                 console.error("Hubo un error al obtener los autos:", error);
             });
-    }, [brand]);
+    }, [brand]); // Este efecto depende de "brand", y se ejecutará cada vez que este cambie
 
     return (
         <div>
